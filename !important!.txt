@@ -1,0 +1,27 @@
+gong@bank-banque-canada.ca
+
+AD PW: Maggiegong0727!
+
+Pin : Maggie1
+
+https://qacf.integrationsuite.cfapps.ca10.hana.ondemand.com/shell/home
+
+
+Welcome$1234_56789 (old)
+SB1
+GONG
+Maggiegong0727!
+
+EC 
+QA
+https://hcm17preview.sapsf.com/sf/orgchart?type=position&bplte_company=bankofcanaT1
+
+SB
+https://hcm17preview.sapsf.com/sf/home?bplte_company=bankofcanaT2&_s.crb=MDB2ZaCtX8iHKjfJszsuyyZ7k8%2fih1KzoxVaZ34hOV4%3d
+
+DEV
+https://hcm17.sapsf.com/sf/home?bplte_company=bankofcanaD
+
+
+
+

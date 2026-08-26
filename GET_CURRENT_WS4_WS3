@@ -1,0 +1,60 @@
+  METHOD GET_CURRENT_WS4_WS3.
+    DATA:
+      lv_temp          TYPE string,
+      is_ok            TYPE boole_d,
+      lv_dummy         TYPE string,
+      lt_ws3           TYPE ecpao_t_ec_payload_badi,
+      lt_ws3_current   TYPE ecpao_t_ec_payload_badi,
+      wa_ws3           TYPE ecpao_s_ec_payload_badi,
+      lt_ws4           TYPE ecpao_t_ec_payload_badi,
+      lt_ws4_current   TYPE ecpao_t_ec_payload_badi,
+      wa_ws4           TYPE ecpao_s_ec_payload_badi,
+      lt_fields        TYPE TABLE OF ecpao_in_s_field_value_pair,
+      wa_fields        TYPE ecpao_in_s_field_value_pair,
+      lv_node          TYPE i,
+      lv_current_pernr TYPE pernr_d,
+      lv_user          TYPE pernr_d.
+
+    SELECT *
+           FROM ecpao_ee_kmap
+           WHERE pernr = @pernr
+           INTO @DATA(result).
+    ENDSELECT.
+    IF result IS NOT INITIAL AND result-user_id <> pernr.
+      lv_user = result-user_id.
+    ELSE.
+      lv_user = pernr.
+    ENDIF.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_3'
+      IMPORTING
+        ec_payload_tab = lt_ws3.
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_4'
+      IMPORTING
+        ec_payload_tab = lt_ws4.
+    LOOP AT lt_ws3 INTO wa_ws3.
+      CLEAR: lv_current_pernr.
+      lt_fields = wa_ws3-field_value_pair_tab.
+      LOOP AT lt_fields INTO  wa_fields.
+        IF wa_fields-ec_fld_name = 'userId'.
+          lv_current_pernr = wa_fields-ec_fld_value.
+        ENDIF.
+      ENDLOOP.
+      IF lv_current_pernr IS NOT INITIAL AND  lv_current_pernr = lv_user.
+        APPEND wa_ws3 TO lt_ws3_current.
+      ENDIF.
+    ENDLOOP.
+    CLEAR: wa_ws3, wa_fields.
+    LOOP AT lt_ws3_current INTO wa_ws3.
+      lv_node = wa_ws3-node_number.
+      LOOP AT lt_ws4 INTO wa_ws4 WHERE parent_node_number = lv_node.
+        APPEND wa_ws4 TO lt_ws4_current.
+      ENDLOOP.
+    ENDLOOP.
+    ws4_tab = lt_ws4_current.
+    ws3_tab = lt_ws3_current.
+  ENDMETHOD.

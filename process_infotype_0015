@@ -1,9 +1,57 @@
   METHOD process_infotype_0015.
-    DATA lt_payload TYPE ecpao_t_ec_payload_badi.
+    DATA: lt_in       TYPE TABLE OF p0015,
+          lt_p0015    TYPE TABLE OF p0015,
+          ls_template TYPE p0015,
+          ls_p0015    TYPE p0015.
+
+    DATA: lt_payload TYPE ecpao_t_ec_payload_badi,
+          wa_payload TYPE ecpao_s_ec_payload_badi,
+          wa_field   TYPE ecpao_in_s_field_value_pair,
+          lv_dummy   TYPE string.
+
+    lt_in = pnnnn_tab.
+    READ TABLE lt_in INTO ls_template INDEX 1.
 
     CALL METHOD get_ws13
       EXPORTING
         ec_payload = ec_payload
       CHANGING
         ws13_tab = lt_payload.
+
+    SORT lt_payload BY begda ASCENDING.
+
+    LOOP AT lt_payload INTO wa_payload.
+      ls_p0015 = ls_template.
+      CLEAR: ls_p0015-subty,
+             ls_p0015-begda,
+             ls_p0015-endda,
+             ls_p0015-lgart,
+             ls_p0015-betrg,
+             ls_p0015-waers,
+             ls_p0015-zuord,
+             ls_p0015-estdt.
+
+      ls_p0015-begda = wa_payload-begda.
+      ls_p0015-endda = wa_payload-endda.
+      ls_p0015-waers = 'CAD'.
+
+      LOOP AT wa_payload-field_value_pair_tab INTO wa_field.
+        CASE wa_field-ec_fld_name.
+          WHEN 'payComponentCode'.
+            SPLIT wa_field-ec_fld_value AT '_'
+              INTO ls_p0015-lgart lv_dummy.
+          WHEN 'value'.
+            ls_p0015-betrg = wa_field-ec_fld_value.
+          WHEN 'currencyCode'.
+            ls_p0015-waers = wa_field-ec_fld_value.
+          WHEN 'customString1'.
+            ls_p0015-zuord = wa_field-ec_fld_value.
+        ENDCASE.
+      ENDLOOP.
+
+      ls_p0015-subty = ls_p0015-lgart.
+      APPEND ls_p0015 TO lt_p0015.
+    ENDLOOP.
+
+    pnnnn_tab = lt_p0015.
   ENDMETHOD.

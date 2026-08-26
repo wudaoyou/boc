@@ -31,6 +31,7 @@
              ls_p0015-zuord,
              ls_p0015-estdt.
 
+      ls_p0015-pernr = ls_template-pernr.
       ls_p0015-begda = wa_payload-begda.
       ls_p0015-endda = wa_payload-endda.
       ls_p0015-waers = 'CAD'.

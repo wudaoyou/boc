@@ -1,2 +1,9 @@
-  method PROCESS_INFOTYPE_0015.
-  endmethod.
+  METHOD process_infotype_0015.
+    DATA lt_payload TYPE ecpao_t_ec_payload_badi.
+
+    CALL METHOD get_ws13
+      EXPORTING
+        ec_payload = ec_payload
+      CHANGING
+        ws13_tab = lt_payload.
+  ENDMETHOD.

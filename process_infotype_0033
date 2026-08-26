@@ -1,0 +1,119 @@
+METHOD process_infotype_0033.
+  "——1—— work areas and tables
+  DATA: lt_in     TYPE TABLE OF p0033,      " original records
+        lt_out    TYPE TABLE OF p0033,      " only H/R → J/1 records
+        ls_record TYPE p0033,
+        ls_p0033  TYPE p0033,
+        lt_p0033  TYPE TABLE OF p0033.
+
+  FIELD-SYMBOLS: <fs_in>  TYPE p0033.
+
+  DATA: lt_payload        TYPE ecpao_t_ec_payload_badi,
+        wa_payload        TYPE ecpao_s_ec_payload_badi,
+        lt_fields         TYPE TABLE OF ecpao_in_s_field_value_pair,
+        wa_field          TYPE ecpao_in_s_field_value_pair,
+        lv_event_reason   TYPE string,
+        lv_event          TYPE string,
+        lv_ee_type        TYPE string,
+        lv_massn          TYPE massn,
+        lv_persk          TYPE persk,
+        lv_massg          TYPE massg,
+        lv_pernr          TYPE pernr,
+        lv_aus01          TYPE p015_staus,
+        lv_aus01_previous TYPE p015_staus,
+        lv_begda          TYPE begda,
+        lv_endda          TYPE endda.
+
+  DATA: ls_current_p0033 TYPE p0033,
+        lt_current_p0033 TYPE TABLE OF p0033.
+
+
+  lt_in = pnnnn_tab.
+  READ TABLE lt_in INTO ls_p0033 INDEX 1.
+
+  call method get_current_ws4_ws3
+    EXPORTING
+      pernr = ls_p0033-pernr
+      ec_payload = ec_payload
+   CHANGING
+      ws4_tab = lt_payload.
+
+
+  SORT lt_payload BY begda ASCENDING.
+
+  LOOP AT lt_payload INTO wa_payload.
+
+    lv_begda = wa_payload-begda.
+    lv_endda = wa_payload-endda.
+
+    IF lv_aus01_previous IS INITIAL.
+      IF lv_begda = '20241228'.
+        " special code to fix the cutover issue.
+        lv_begda = '20241227'.
+      ENDIF.
+      " Get current IT0033 record
+      CALL FUNCTION 'HR_READ_INFOTYPE'
+        EXPORTING
+          pernr         = ls_p0033-pernr
+          infty         = '0033'
+          begda         = lv_begda
+          endda         = lv_endda
+          bypass_buffer = 'X'
+        TABLES
+          infty_tab     = lt_current_p0033.
+      SORT lt_current_p0033 BY endda DESCENDING.
+      READ TABLE lt_current_p0033 INTO ls_current_p0033 INDEX 1.
+      lv_aus01_previous  = ls_current_p0033-aus01.
+      IF lv_begda = '20241227'.
+        lv_begda = '20241228'.
+      ENDIF.
+    ENDIF.
+
+*    " pull out the event field
+    LOOP AT wa_payload-field_value_pair_tab INTO wa_field
+          WHERE ec_fld_name = 'event'.
+      lv_event = wa_field-ec_fld_value.
+      lv_massn = lv_event.
+    ENDLOOP.
+    LOOP AT wa_payload-field_value_pair_tab INTO wa_field
+          WHERE ec_fld_name = 'eventReason'.
+      lv_event_reason = wa_field-ec_fld_value.
+      lv_massg = lv_event_reason.
+    ENDLOOP.
+
+    LOOP AT wa_payload-field_value_pair_tab INTO wa_field
+          WHERE ec_fld_name = 'employmentType'.
+      lv_ee_type = wa_field-ec_fld_value.
+      lv_persk = lv_ee_type.
+    ENDLOOP.
+
+    lv_aus01 = get_ratekey( sfaction            = lv_massn
+                            currenteesubgroup   = lv_persk
+                            currentactionreason = lv_massg
+                            begda               = lv_begda ).
+    ls_p0033-begda = lv_begda.
+    ls_p0033-endda = lv_endda.
+    IF lv_aus01 IS NOT INITIAL.
+      ls_p0033-aus01 = lv_aus01.
+      lv_aus01_previous = lv_aus01.
+    ELSE.
+      ls_p0033-aus01 = lv_aus01_previous.
+    ENDIF.
+
+    APPEND ls_p0033 TO lt_p0033.
+
+    CLEAR:  lv_event, lv_begda, lv_endda.
+  ENDLOOP.
+
+  " merge records
+  merge_period(
+    EXPORTING
+      iv_keyfield = 'AUS01'
+      iv_begda    = 'BEGDA'
+      iv_endda    = 'ENDDA'
+    CHANGING
+      ct_any      = lt_p0033 ).
+
+  pnnnn_tab = lt_p0033.
+
+ENDMETHOD.

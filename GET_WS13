@@ -1,0 +1,7 @@
+  METHOD get_ws13.
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_13'
+      IMPORTING
+        ec_payload_tab = ws13_tab.
+  ENDMETHOD.

@@ -1,0 +1,58 @@
+  METHOD get_current_deduction.
+    DATA:
+      lt_ws3                    TYPE ecpao_t_ec_payload_badi,
+      wa_ws3                    TYPE ecpao_s_ec_payload_badi,
+      lt_deduction              TYPE ecpao_t_ec_payload_badi,
+      lt_deduction_current      TYPE ecpao_t_ec_payload_badi,
+      wa_deduction              TYPE ecpao_s_ec_payload_badi,
+      lt_deduction_item         TYPE ecpao_t_ec_payload_badi,
+      lt_deduction_item_current TYPE ecpao_t_ec_payload_badi,
+      wa_deduction_item         TYPE ecpao_s_ec_payload_badi,
+      wa_field                  TYPE ecpao_in_s_field_value_pair,
+      lv_payload_user           TYPE pernr_d.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_3'
+      IMPORTING
+        ec_payload_tab = lt_ws3.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = '9_WS_REC'
+      IMPORTING
+        ec_payload_tab = lt_deduction.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = '9_WS_RECDE'
+      IMPORTING
+        ec_payload_tab = lt_deduction_item.
+
+    LOOP AT lt_ws3 INTO wa_ws3.
+      CLEAR lv_payload_user.
+
+      READ TABLE wa_ws3-field_value_pair_tab
+        INTO wa_field
+        WITH KEY ec_fld_name = 'userId'.
+
+      IF sy-subrc = 0.
+        lv_payload_user = wa_field-ec_fld_value.
+      ENDIF.
+
+      IF lv_payload_user IS NOT INITIAL AND lv_payload_user = pernr.
+        LOOP AT lt_deduction INTO wa_deduction
+          WHERE parent_node_number = wa_ws3-node_number.
+          APPEND wa_deduction TO lt_deduction_current.
+
+          LOOP AT lt_deduction_item INTO wa_deduction_item
+            WHERE parent_node_number = wa_deduction-node_number.
+            APPEND wa_deduction_item TO lt_deduction_item_current.
+          ENDLOOP.
+        ENDLOOP.
+      ENDIF.
+    ENDLOOP.
+
+    deduction_tab      = lt_deduction_current.
+    deduction_item_tab = lt_deduction_item_current.
+  ENDMETHOD.

@@ -1,0 +1,13 @@
+  METHOD process_infotype_0014.
+    DATA:
+      lt_deduction      TYPE ecpao_t_ec_payload_badi,
+      lt_deduction_item TYPE ecpao_t_ec_payload_badi.
+
+    CALL METHOD get_current_deduction
+      EXPORTING
+        pernr              = pernr
+        ec_payload         = ec_payload
+      CHANGING
+        deduction_tab      = lt_deduction
+        deduction_item_tab = lt_deduction_item.
+  ENDMETHOD.

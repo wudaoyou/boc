@@ -15,6 +15,11 @@
 
     lt_p0008 = pnnnn_tab.
 
+    " IT0008 / IT0014 pay component filter placeholder:
+    " Keep only Basic Pay wage type slots in lt_p0008.
+    " Exclude non-Basic recurring pay components here; IT0014 handles them.
+    " TODO: Implement after the Basic Pay wage type rule is confirmed.
+
     CALL METHOD get_current_ws11
       EXPORTING
         pernr      = pernr
@@ -22,11 +27,12 @@
       CHANGING
         ws11_tab   = lt_payload_11.
 
-    CALL METHOD ec_payload->get_ec_payload
+    CALL METHOD get_current_ws4_ws3
       EXPORTING
-        ec_templ_id    = 'WS_4'
-      IMPORTING
-        ec_payload_tab = lt_payload_4.
+        pernr      = pernr
+        ec_payload = ec_payload
+      CHANGING
+        ws4_tab    = lt_payload_4.
 
 
 

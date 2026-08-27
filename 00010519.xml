@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <queryCompoundEmployeeResponse>
     <CompoundEmployee>
-        <id>1608</id>
+        <id>1584</id>
         <person>
             <created_by>101825</created_by>
-            <created_on_timestamp>2017-02-01T14:53:30.000Z</created_on_timestamp>
-            <date_of_birth>1969-03-26</date_of_birth>
+            <created_on_timestamp>2017-02-01T14:53:28.000Z</created_on_timestamp>
+            <date_of_birth>1966-02-24</date_of_birth>
             <last_modified_by>00101825</last_modified_by>
             <last_modified_on>2017-11-06T19:50:38.000Z</last_modified_on>
-            <logon_user_id>00010615</logon_user_id>
+            <logon_user_id>00010519</logon_user_id>
             <logon_user_is_active>true</logon_user_is_active>
-            <logon_user_name>REDA@bank-banque-canada.ca</logon_user_name>
-            <per_person_uuid>72D5636C274346129691559EA55ECB6C</per_person_uuid>
-            <person_id>1608</person_id>
-            <person_id_external>00010615</person_id_external>
+            <logon_user_name>CADP@bank-banque-canada.ca</logon_user_name>
+            <per_person_uuid>48006C3FB48E4E7D9ECA2ED0C27FF478</per_person_uuid>
+            <person_id>1584</person_id>
+            <person_id_external>00010519</person_id_external>
             <personal_information>
                 <created_by>00101825</created_by>
                 <created_on_timestamp>2017-11-06T19:54:16.000Z</created_on_timestamp>
-                <custom_string1>EN</custom_string1>
+                <custom_string1>FR</custom_string1>
                 <end_date>9999-12-31</end_date>
-                <first_name>Maria</first_name>
-                <formal_name>Maria Reda </formal_name>
-                <gender>F</gender>
-                <initials>M</initials>
+                <first_name>Donald</first_name>
+                <formal_name>Donald Caron </formal_name>
+                <gender>M</gender>
+                <initials>J J D</initials>
                 <is_overridden>false</is_overridden>
                 <last_modified_by>00101825</last_modified_by>
                 <last_modified_on>2017-11-07T22:03:34.000Z</last_modified_on>
-                <last_name>Reda</last_name>
-                <native_preferred_lang>EN</native_preferred_lang>
-                <preferred_name>Maria</preferred_name>
-                <salutation>4</salutation>
+                <last_name>Caron</last_name>
+                <native_preferred_lang>FR</native_preferred_lang>
+                <preferred_name>Donald</preferred_name>
+                <salutation>6</salutation>
                 <start_date>2017-11-03</start_date>
                 <personal_information_can>
                     <country>CAN</country>
@@ -44,19 +44,20 @@
                 </personal_information_can>
             </personal_information>
             <address_information>
-                <address1>2214 100e Avenue</address1>
+                <address1>2660 Avenue Adrien</address1>
                 <address_type>home</address_type>
-                <city>Laval</city>
+                <city>Brossard</city>
                 <country>CAN</country>
-                <created_by>00010615</created_by>
-                <created_on_timestamp>2023-07-14T17:51:07.000Z</created_on_timestamp>
+                <created_by>00010519</created_by>
+                <created_on_timestamp>2023-12-05T17:48:01.000Z</created_on_timestamp>
+                <custom_date3>2023-12-04</custom_date3>
                 <end_date>9999-12-31</end_date>
                 <is_global_model_address>false</is_global_model_address>
-                <last_modified_by>00010615</last_modified_by>
-                <last_modified_on>2023-07-14T17:51:07.000Z</last_modified_on>
-                <start_date>2023-07-21</start_date>
+                <last_modified_by>00010519</last_modified_by>
+                <last_modified_on>2023-12-05T17:49:35.000Z</last_modified_on>
+                <start_date>2023-12-04</start_date>
                 <state>QC</state>
-                <zip_code>H7T 0A5</zip_code>
+                <zip_code>J4Z 3A6</zip_code>
             </address_information>
             <phone_information>
                 <area_code>514</area_code>
@@ -66,30 +67,30 @@
                 <isPrimary>false</isPrimary>
                 <last_modified_by>200927</last_modified_by>
                 <last_modified_on>2023-04-28T17:13:02.000Z</last_modified_on>
-                <phone_number>888-4302</phone_number>
+                <phone_number>888-4444</phone_number>
                 <phone_type>B</phone_type>
             </phone_information>
             <phone_information>
                 <area_code>438</area_code>
                 <country_code>CAN</country_code>
-                <created_by>00010615</created_by>
-                <created_on_timestamp>2021-02-05T15:12:37.000Z</created_on_timestamp>
+                <created_by>00101825</created_by>
+                <created_on_timestamp>2022-09-02T18:26:56.000Z</created_on_timestamp>
                 <isPrimary>true</isPrimary>
                 <last_modified_by>200927</last_modified_by>
                 <last_modified_on>2023-04-28T17:13:02.000Z</last_modified_on>
-                <phone_number>356-6572</phone_number>
+                <phone_number>458-9210</phone_number>
                 <phone_type>C</phone_type>
             </phone_information>
             <phone_information>
                 <area_code>514</area_code>
                 <country_code>CAN</country_code>
-                <created_by>00010615</created_by>
-                <created_on_timestamp>2021-02-05T15:12:38.000Z</created_on_timestamp>
+                <created_by>00101825</created_by>
+                <created_on_timestamp>2017-11-06T20:48:43.000Z</created_on_timestamp>
                 <isPrimary>false</isPrimary>
-                <last_modified_by>00010615</last_modified_by>
-                <last_modified_on>2021-02-05T15:12:38.000Z</last_modified_on>
-                <phone_number>235-3236</phone_number>
-                <phone_type>P</phone_type>
+                <last_modified_by>00010519</last_modified_by>
+                <last_modified_on>2018-07-13T20:28:10.000Z</last_modified_on>
+                <phone_number>605-2042</phone_number>
+                <phone_type>H</phone_type>
             </phone_information>
             <email_information>
                 <created_by>00101825</created_by>
@@ -100,69 +101,60 @@
                 <last_modified_by>IBMadminJF</last_modified_by>
                 <last_modified_on>2026-06-25T17:05:09.000Z</last_modified_on>
             </email_information>
-            <email_information>
-                <created_by>00010615</created_by>
-                <created_on_timestamp>2021-02-05T15:12:37.000Z</created_on_timestamp>
-                <email_address>hrm_Notifications@bank-banque-canada.ca</email_address>
-                <email_type>P</email_type>
-                <isPrimary>false</isPrimary>
-                <last_modified_by>IBMadminJF</last_modified_by>
-                <last_modified_on>2026-06-25T17:05:09.000Z</last_modified_on>
-            </email_information>
             <employment_information>
                 <assignment_class>ST</assignment_class>
-                <assignment_uuid>CC9A6608D30F4338A559819310B8667D</assignment_uuid>
-                <assignmentIdExternal>00010615</assignmentIdExternal>
+                <assignment_uuid>F5148B9A5AB3458F9705B851AD4A15A5</assignment_uuid>
+                <assignmentIdExternal>00010519</assignmentIdExternal>
                 <created_by>101825</created_by>
-                <created_on_timestamp>2017-02-01T14:53:30.000Z</created_on_timestamp>
-                <custom_date1>1989-05-13</custom_date1>
-                <custom_string1>00010615</custom_string1>
-                <custom_string2>REDA</custom_string2>
+                <created_on_timestamp>2017-02-01T14:53:28.000Z</created_on_timestamp>
+                <custom_date1>1991-01-29</custom_date1>
+                <custom_string1>00010519</custom_string1>
+                <custom_string2>CADP</custom_string2>
                 <direct_reports>0</direct_reports>
-                <employment_id>339</employment_id>
+                <employment_id>315</employment_id>
                 <hiringNotCompleted>false</hiringNotCompleted>
                 <isContingentWorker>false</isContingentWorker>
                 <jobNumber>1</jobNumber>
-                <last_modified_by>200515</last_modified_by>
-                <last_modified_on>2020-10-08T19:25:51.000Z</last_modified_on>
-                <originalStartDate>1989-02-13</originalStartDate>
-                <serviceDate>1989-02-13</serviceDate>
-                <start_date>1989-02-13</start_date>
-                <user_id>00010615</user_id>
+                <last_modified_by>00101825</last_modified_by>
+                <last_modified_on>2017-11-06T19:51:53.000Z</last_modified_on>
+                <originalStartDate>1990-10-29</originalStartDate>
+                <serviceDate>1990-10-29</serviceDate>
+                <start_date>1990-10-29</start_date>
+                <user_id>00010519</user_id>
                 <job_information>
                     <business_unit>CU</business_unit>
                     <calc_method_indicator>false</calc_method_indicator>
                     <company>BANK</company>
                     <company_territory_code>CAN</company_territory_code>
-                    <cost_center>CABK0000016711</cost_center>
+                    <cost_center>CABK0000016068</cost_center>
                     <created_by>200550</created_by>
                     <created_on>2026-05-08</created_on>
                     <created_on_timestamp>2026-05-08T00:20:17.000Z</created_on_timestamp>
-                    <custom_date6>2005-02-09</custom_date6>
+                    <custom_date6>2007-08-24</custom_date6>
                     <custom_double4>100.0</custom_double4>
                     <custom_string1>9</custom_string1>
                     <custom_string10>No</custom_string10>
-                    <custom_string15>PLR22</custom_string15>
+                    <custom_string15>PLR20</custom_string15>
                     <custom_string17>07</custom_string17>
                     <custom_string18>9</custom_string18>
                     <custom_string2>K1</custom_string2>
                     <custom_string20>EX7</custom_string20>
                     <custom_string21>RM_hybridmodel_1</custom_string21>
-                    <custom_string25>E6</custom_string25>
+                    <custom_string25>S4</custom_string25>
                     <custom_string26>MONT</custom_string26>
-                    <custom_string27>14</custom_string27>
+                    <custom_string27>11</custom_string27>
                     <custom_string28>AP5</custom_string28>
-                    <custom_string29>Analyst</custom_string29>
+                    <custom_string29>OperS</custom_string29>
                     <custom_string3>1</custom_string3>
                     <custom_string30>BOC4</custom_string30>
-                    <custom_string31>14201</custom_string31>
+                    <custom_string31>14400</custom_string31>
                     <custom_string32>N</custom_string32>
                     <custom_string35>02</custom_string35>
                     <custom_string4>QO</custom_string4>
-                    <custom_string40>15</custom_string40>
+                    <custom_string40>7</custom_string40>
                     <custom_string5>REG 375H</custom_string5>
                     <custom_string8>NA</custom_string8>
-                    <department>2000501</department>
+                    <department>1356525</department>
                     <division>CUR</division>
                     <employee_class>1</employee_class>
                     <employment_type>7A</employment_type>
@@ -184,32 +176,32 @@
                     <is_primary>false</is_primary>
                     <is_shift_employee>false</is_shift_employee>
                     <is_side_line_job_allowed>false</is_side_line_job_allowed>
-                    <job_code>310552</job_code>
-                    <job_info_id>100277</job_info_id>
-                    <job_title>BNDS Operations Analyst/analyste des opérations SDBB</job_title>
+                    <job_code>310391</job_code>
+                    <job_info_id>100275</job_info_id>
+                    <job_title>Operations Agent/agent des opérations</job_title>
                     <labor_Protection>false</labor_Protection>
                     <last_modified_by>200550</last_modified_by>
                     <last_modified_on>2026-05-08T00:20:17.000Z</last_modified_on>
                     <location>0720-0001</location>
-                    <manager_assignment_id_external>00100229</manager_assignment_id_external>
-                    <manager_employment_id>736</manager_employment_id>
-                    <manager_id>00100229</manager_id>
-                    <manager_person_id>2005</manager_person_id>
-                    <manager_person_id_external>00100229</manager_person_id_external>
-                    <manager_person_uuid>C2A81284070D4FD6A930308A2D03B2CC</manager_person_uuid>
+                    <manager_assignment_id_external>202421</manager_assignment_id_external>
+                    <manager_employment_id>12850</manager_employment_id>
+                    <manager_id>202421</manager_id>
+                    <manager_person_id>14299</manager_person_id>
+                    <manager_person_id_external>202421</manager_person_id_external>
+                    <manager_person_uuid>E72C4E90662F4DF1A124C80A7A5F6FC6</manager_person_uuid>
                     <new_calc_avg_dnp>false</new_calc_avg_dnp>
                     <new_calc_avg_ppu>false</new_calc_avg_ppu>
-                    <pay_grade>CAN/01/31/14/00</pay_grade>
+                    <pay_grade>CAN/01/31/11/00</pay_grade>
                     <payment_in_lieu_of_notice>false</payment_in_lieu_of_notice>
                     <payScaleArea>CAN/01</payScaleArea>
-                    <payScaleGroup>CAN/01/31/14</payScaleGroup>
-                    <payScaleLevel>CAN/01/31/14/00</payScaleLevel>
+                    <payScaleGroup>CAN/01/31/11</payScaleGroup>
+                    <payScaleLevel>CAN/01/31/11/00</payScaleLevel>
                     <payScaleType>CAN/31</payScaleType>
                     <pcfm>false</pcfm>
                     <pension_protection>false</pension_protection>
                     <permit_indicator>false</permit_indicator>
-                    <position>412032</position>
-                    <positionEntryDate>2020-10-13</positionEntryDate>
+                    <position>404529</position>
+                    <positionEntryDate>2020-02-22</positionEntryDate>
                     <regular_temp>null</regular_temp>
                     <resident_vote>false</resident_vote>
                     <retired>false</retired>
@@ -227,35 +219,35 @@
                     <calc_method_indicator>false</calc_method_indicator>
                     <company>BANK</company>
                     <company_territory_code>CAN</company_territory_code>
-                    <cost_center>CABK0000016711</cost_center>
-                    <created_by>200256</created_by>
-                    <created_on>2024-12-23</created_on>
-                    <created_on_timestamp>2024-12-23T16:29:31.000Z</created_on_timestamp>
-                    <custom_date6>2005-02-09</custom_date6>
+                    <cost_center>CABK0000016068</cost_center>
+                    <created_by>200515</created_by>
+                    <created_on>2025-02-11</created_on>
+                    <created_on_timestamp>2025-02-11T19:48:21.000Z</created_on_timestamp>
+                    <custom_date6>2007-08-24</custom_date6>
                     <custom_double4>100.0</custom_double4>
                     <custom_string1>5</custom_string1>
                     <custom_string10>No</custom_string10>
-                    <custom_string15>PLR22</custom_string15>
+                    <custom_string15>PLR20</custom_string15>
                     <custom_string17>07</custom_string17>
                     <custom_string18>9</custom_string18>
                     <custom_string2>K1</custom_string2>
                     <custom_string20>EX7</custom_string20>
                     <custom_string21>RM_hybridmodel_1</custom_string21>
-                    <custom_string25>E6</custom_string25>
+                    <custom_string25>S4</custom_string25>
                     <custom_string26>MONT</custom_string26>
-                    <custom_string27>14</custom_string27>
+                    <custom_string27>11</custom_string27>
                     <custom_string28>AP5</custom_string28>
-                    <custom_string29>Analyst</custom_string29>
+                    <custom_string29>OperS</custom_string29>
                     <custom_string3>1</custom_string3>
                     <custom_string30>BOC4</custom_string30>
-                    <custom_string31>14201</custom_string31>
+                    <custom_string31>14400</custom_string31>
                     <custom_string32>N</custom_string32>
                     <custom_string35>02</custom_string35>
                     <custom_string4>QO</custom_string4>
-                    <custom_string40>15</custom_string40>
+                    <custom_string40>7</custom_string40>
                     <custom_string5>REG 375H</custom_string5>
                     <custom_string8>NA</custom_string8>
-                    <department>2000501</department>
+                    <department>1356525</department>
                     <division>CUR</division>
                     <employee_class>1</employee_class>
                     <employment_type>7A</employment_type>
@@ -277,32 +269,225 @@
                     <is_primary>false</is_primary>
                     <is_shift_employee>false</is_shift_employee>
                     <is_side_line_job_allowed>false</is_side_line_job_allowed>
-                    <job_code>310552</job_code>
-                    <job_info_id>84506</job_info_id>
-                    <job_title>BNDS Operations Analyst/analyste des opérations SDBB</job_title>
+                    <job_code>310391</job_code>
+                    <job_info_id>85937</job_info_id>
+                    <job_title>Operations Agent/agent des opérations</job_title>
                     <labor_Protection>false</labor_Protection>
-                    <last_modified_by>200256</last_modified_by>
-                    <last_modified_on>2025-09-15T15:21:18.000Z</last_modified_on>
+                    <last_modified_by>200515</last_modified_by>
+                    <last_modified_on>2025-02-11T19:48:21.000Z</last_modified_on>
                     <location>0720-0001</location>
-                    <manager_assignment_id_external>00100229</manager_assignment_id_external>
-                    <manager_employment_id>736</manager_employment_id>
-                    <manager_id>00100229</manager_id>
-                    <manager_person_id>2005</manager_person_id>
-                    <manager_person_id_external>00100229</manager_person_id_external>
-                    <manager_person_uuid>C2A81284070D4FD6A930308A2D03B2CC</manager_person_uuid>
+                    <manager_assignment_id_external>202421</manager_assignment_id_external>
+                    <manager_employment_id>12850</manager_employment_id>
+                    <manager_id>202421</manager_id>
+                    <manager_person_id>14299</manager_person_id>
+                    <manager_person_id_external>202421</manager_person_id_external>
+                    <manager_person_uuid>E72C4E90662F4DF1A124C80A7A5F6FC6</manager_person_uuid>
                     <new_calc_avg_dnp>false</new_calc_avg_dnp>
                     <new_calc_avg_ppu>false</new_calc_avg_ppu>
-                    <pay_grade>CAN/01/31/14/00</pay_grade>
+                    <notes>HRC0018662</notes>
+                    <pay_grade>CAN/01/31/11/00</pay_grade>
                     <payment_in_lieu_of_notice>false</payment_in_lieu_of_notice>
                     <payScaleArea>CAN/01</payScaleArea>
-                    <payScaleGroup>CAN/01/31/14</payScaleGroup>
-                    <payScaleLevel>CAN/01/31/14/00</payScaleLevel>
+                    <payScaleGroup>CAN/01/31/11</payScaleGroup>
+                    <payScaleLevel>CAN/01/31/11/00</payScaleLevel>
                     <payScaleType>CAN/31</payScaleType>
                     <pcfm>false</pcfm>
                     <pension_protection>false</pension_protection>
                     <permit_indicator>false</permit_indicator>
-                    <position>412032</position>
-                    <positionEntryDate>2020-10-13</positionEntryDate>
+                    <position>404529</position>
+                    <positionEntryDate>2020-02-22</positionEntryDate>
+                    <regular_temp>null</regular_temp>
+                    <resident_vote>false</resident_vote>
+                    <retired>false</retired>
+                    <seq_number>2</seq_number>
+                    <shift_factor>0.0</shift_factor>
+                    <shift_rate>0.0</shift_rate>
+                    <spcl_rule_non_manual_worker>false</spcl_rule_non_manual_worker>
+                    <standard_hours>0.0</standard_hours>
+                    <start_date>2025-02-10</start_date>
+                    <teachers_pension>false</teachers_pension>
+                    <time_type_profile_code>LEAVE_OF_ABSENCE_PROFILE</time_type_profile_code>
+                    <timezone>America/Montreal</timezone>
+                    <working_time_directive>false</working_time_directive>
+                    <workingDaysPerWeek>5.0</workingDaysPerWeek>
+                </job_information>
+                <job_information>
+                    <business_unit>CU</business_unit>
+                    <calc_method_indicator>false</calc_method_indicator>
+                    <company>BANK</company>
+                    <company_territory_code>CAN</company_territory_code>
+                    <cost_center>CABK0000016068</cost_center>
+                    <created_by>200515</created_by>
+                    <created_on>2025-02-11</created_on>
+                    <created_on_timestamp>2025-02-11T19:48:18.000Z</created_on_timestamp>
+                    <custom_date6>2007-08-24</custom_date6>
+                    <custom_double4>100.0</custom_double4>
+                    <custom_string1>5</custom_string1>
+                    <custom_string10>No</custom_string10>
+                    <custom_string15>PLR20</custom_string15>
+                    <custom_string17>07</custom_string17>
+                    <custom_string18>9</custom_string18>
+                    <custom_string2>K1</custom_string2>
+                    <custom_string20>EX7</custom_string20>
+                    <custom_string21>RM_hybridmodel_1</custom_string21>
+                    <custom_string25>S4</custom_string25>
+                    <custom_string26>MONT</custom_string26>
+                    <custom_string27>11</custom_string27>
+                    <custom_string28>AP5</custom_string28>
+                    <custom_string29>OperS</custom_string29>
+                    <custom_string3>1</custom_string3>
+                    <custom_string30>BOC4</custom_string30>
+                    <custom_string31>14400</custom_string31>
+                    <custom_string32>N</custom_string32>
+                    <custom_string35>02</custom_string35>
+                    <custom_string40>7</custom_string40>
+                    <custom_string5>REG 375H</custom_string5>
+                    <custom_string8>NA</custom_string8>
+                    <department>1356525</department>
+                    <division>CUR</division>
+                    <employee_class>1</employee_class>
+                    <employment_type>7A</employment_type>
+                    <emplStatus>A</emplStatus>
+                    <end_date>2025-02-10</end_date>
+                    <event>5</event>
+                    <event_reason>KT</event_reason>
+                    <excl_executive_sector>false</excl_executive_sector>
+                    <fgts_optant>false</fgts_optant>
+                    <fte>1.0</fte>
+                    <hazard>false</hazard>
+                    <health_risk>false</health_risk>
+                    <ineligible_statutory_min_wage>false</ineligible_statutory_min_wage>
+                    <is_competition_clause_active>false</is_competition_clause_active>
+                    <is_cross_border_worker>false</is_cross_border_worker>
+                    <is_eligible_for_benefit>false</is_eligible_for_benefit>
+                    <is_eligible_for_car>false</is_eligible_for_car>
+                    <is_fulltime_employee>true</is_fulltime_employee>
+                    <is_primary>false</is_primary>
+                    <is_shift_employee>false</is_shift_employee>
+                    <is_side_line_job_allowed>false</is_side_line_job_allowed>
+                    <job_code>310391</job_code>
+                    <job_info_id>85936</job_info_id>
+                    <job_title>Operations Agent/agent des opérations</job_title>
+                    <labor_Protection>false</labor_Protection>
+                    <last_modified_by>200515</last_modified_by>
+                    <last_modified_on>2025-02-11T19:48:18.000Z</last_modified_on>
+                    <location>0720-0001</location>
+                    <manager_assignment_id_external>202421</manager_assignment_id_external>
+                    <manager_employment_id>12850</manager_employment_id>
+                    <manager_id>202421</manager_id>
+                    <manager_person_id>14299</manager_person_id>
+                    <manager_person_id_external>202421</manager_person_id_external>
+                    <manager_person_uuid>E72C4E90662F4DF1A124C80A7A5F6FC6</manager_person_uuid>
+                    <new_calc_avg_dnp>false</new_calc_avg_dnp>
+                    <new_calc_avg_ppu>false</new_calc_avg_ppu>
+                    <notes>HRC0018662</notes>
+                    <pay_grade>CAN/01/31/11/00</pay_grade>
+                    <payment_in_lieu_of_notice>false</payment_in_lieu_of_notice>
+                    <payScaleArea>CAN/01</payScaleArea>
+                    <payScaleGroup>CAN/01/31/11</payScaleGroup>
+                    <payScaleLevel>CAN/01/31/11/00</payScaleLevel>
+                    <payScaleType>CAN/31</payScaleType>
+                    <pcfm>false</pcfm>
+                    <pension_protection>false</pension_protection>
+                    <permit_indicator>false</permit_indicator>
+                    <position>404529</position>
+                    <positionEntryDate>2020-02-22</positionEntryDate>
+                    <regular_temp>null</regular_temp>
+                    <resident_vote>false</resident_vote>
+                    <retired>false</retired>
+                    <seq_number>1</seq_number>
+                    <shift_factor>0.0</shift_factor>
+                    <shift_rate>0.0</shift_rate>
+                    <spcl_rule_non_manual_worker>false</spcl_rule_non_manual_worker>
+                    <standard_hours>0.0</standard_hours>
+                    <start_date>2025-02-10</start_date>
+                    <teachers_pension>false</teachers_pension>
+                    <time_type_profile_code>LEAVE_OF_ABSENCE_PROFILE</time_type_profile_code>
+                    <timezone>America/Montreal</timezone>
+                    <working_time_directive>false</working_time_directive>
+                    <workingDaysPerWeek>5.0</workingDaysPerWeek>
+                </job_information>
+                <job_information>
+                    <business_unit>CU</business_unit>
+                    <calc_method_indicator>false</calc_method_indicator>
+                    <company>BANK</company>
+                    <company_territory_code>CAN</company_territory_code>
+                    <cost_center>CABK0000016068</cost_center>
+                    <created_by>200256</created_by>
+                    <created_on>2024-12-23</created_on>
+                    <created_on_timestamp>2024-12-23T16:16:49.000Z</created_on_timestamp>
+                    <custom_date6>2007-08-24</custom_date6>
+                    <custom_double4>100.0</custom_double4>
+                    <custom_string1>5</custom_string1>
+                    <custom_string10>No</custom_string10>
+                    <custom_string15>PLR20</custom_string15>
+                    <custom_string17>07</custom_string17>
+                    <custom_string18>9</custom_string18>
+                    <custom_string2>K1</custom_string2>
+                    <custom_string20>EX7</custom_string20>
+                    <custom_string21>RM_hybridmodel_1</custom_string21>
+                    <custom_string25>S4</custom_string25>
+                    <custom_string26>MONT</custom_string26>
+                    <custom_string27>11</custom_string27>
+                    <custom_string28>AP5</custom_string28>
+                    <custom_string29>OperS</custom_string29>
+                    <custom_string3>1</custom_string3>
+                    <custom_string30>BOC4</custom_string30>
+                    <custom_string31>14400</custom_string31>
+                    <custom_string32>N</custom_string32>
+                    <custom_string35>02</custom_string35>
+                    <custom_string40>7</custom_string40>
+                    <custom_string5>REG 375H</custom_string5>
+                    <custom_string8>NA</custom_string8>
+                    <department>1356525</department>
+                    <division>CUR</division>
+                    <employee_class>1</employee_class>
+                    <employment_type>7A</employment_type>
+                    <emplStatus>A</emplStatus>
+                    <end_date>2025-02-09</end_date>
+                    <event>5</event>
+                    <event_reason>KZ</event_reason>
+                    <excl_executive_sector>false</excl_executive_sector>
+                    <fgts_optant>false</fgts_optant>
+                    <fte>1.0</fte>
+                    <hazard>false</hazard>
+                    <health_risk>false</health_risk>
+                    <ineligible_statutory_min_wage>false</ineligible_statutory_min_wage>
+                    <is_competition_clause_active>false</is_competition_clause_active>
+                    <is_cross_border_worker>false</is_cross_border_worker>
+                    <is_eligible_for_benefit>false</is_eligible_for_benefit>
+                    <is_eligible_for_car>false</is_eligible_for_car>
+                    <is_fulltime_employee>true</is_fulltime_employee>
+                    <is_primary>false</is_primary>
+                    <is_shift_employee>false</is_shift_employee>
+                    <is_side_line_job_allowed>false</is_side_line_job_allowed>
+                    <job_code>310391</job_code>
+                    <job_info_id>84433</job_info_id>
+                    <job_title>Operations Agent/agent des opérations</job_title>
+                    <labor_Protection>false</labor_Protection>
+                    <last_modified_by>200256</last_modified_by>
+                    <last_modified_on>2024-12-23T16:16:49.000Z</last_modified_on>
+                    <location>0720-0001</location>
+                    <manager_assignment_id_external>00013110</manager_assignment_id_external>
+                    <manager_employment_id>516</manager_employment_id>
+                    <manager_id>00013110</manager_id>
+                    <manager_person_id>1785</manager_person_id>
+                    <manager_person_id_external>00013110</manager_person_id_external>
+                    <manager_person_uuid>FA69BBFF7EBD4BE3B0AFFED9D1ADC798</manager_person_uuid>
+                    <new_calc_avg_dnp>false</new_calc_avg_dnp>
+                    <new_calc_avg_ppu>false</new_calc_avg_ppu>
+                    <notes>HRC0018662</notes>
+                    <pay_grade>CAN/01/31/11/00</pay_grade>
+                    <payment_in_lieu_of_notice>false</payment_in_lieu_of_notice>
+                    <payScaleArea>CAN/01</payScaleArea>
+                    <payScaleGroup>CAN/01/31/11</payScaleGroup>
+                    <payScaleLevel>CAN/01/31/11/00</payScaleLevel>
+                    <payScaleType>CAN/31</payScaleType>
+                    <pcfm>false</pcfm>
+                    <pension_protection>false</pension_protection>
+                    <permit_indicator>false</permit_indicator>
+                    <position>404529</position>
+                    <positionEntryDate>2020-02-22</positionEntryDate>
                     <regular_temp>null</regular_temp>
                     <resident_vote>false</resident_vote>
                     <retired>false</retired>
@@ -323,35 +508,35 @@
                     <calc_method_indicator>false</calc_method_indicator>
                     <company>BANK</company>
                     <company_territory_code>CAN</company_territory_code>
-                    <cost_center>CABK0000016711</cost_center>
+                    <cost_center>CABK0000016068</cost_center>
                     <created_by>200758</created_by>
                     <created_on>2025-08-02</created_on>
                     <created_on_timestamp>2025-08-02T14:15:04.000Z</created_on_timestamp>
-                    <custom_date6>2005-02-09</custom_date6>
+                    <custom_date6>2007-08-24</custom_date6>
                     <custom_double4>100.0</custom_double4>
                     <custom_string1>5</custom_string1>
                     <custom_string10>No</custom_string10>
-                    <custom_string15>PLR22</custom_string15>
+                    <custom_string15>PLR20</custom_string15>
                     <custom_string17>07</custom_string17>
                     <custom_string18>9</custom_string18>
                     <custom_string2>K1</custom_string2>
                     <custom_string20>EX7</custom_string20>
                     <custom_string21>RM_hybridmodel_1</custom_string21>
-                    <custom_string25>E6</custom_string25>
+                    <custom_string25>S4</custom_string25>
                     <custom_string26>MONT</custom_string26>
-                    <custom_string27>14</custom_string27>
+                    <custom_string27>11</custom_string27>
                     <custom_string28>AP5</custom_string28>
-                    <custom_string29>Analyst</custom_string29>
+                    <custom_string29>OperS</custom_string29>
                     <custom_string3>1</custom_string3>
                     <custom_string30>BOC4</custom_string30>
-                    <custom_string31>14201</custom_string31>
+                    <custom_string31>14400</custom_string31>
                     <custom_string32>N</custom_string32>
                     <custom_string35>02</custom_string35>
                     <custom_string4>PROD</custom_string4>
-                    <custom_string40>15</custom_string40>
+                    <custom_string40>7</custom_string40>
                     <custom_string5>REG 375H</custom_string5>
                     <custom_string8>NA</custom_string8>
-                    <department>2000501</department>
+                    <department>1356525</department>
                     <division>CUR</division>
                     <employee_class>1</employee_class>
                     <employment_type>7A</employment_type>
@@ -373,32 +558,33 @@
                     <is_primary>false</is_primary>
                     <is_shift_employee>false</is_shift_employee>
                     <is_side_line_job_allowed>false</is_side_line_job_allowed>
-                    <job_code>310552</job_code>
-                    <job_info_id>90646</job_info_id>
-                    <job_title>BNDS Operations Analyst/analyste des opérations SDBB</job_title>
+                    <job_code>310391</job_code>
+                    <job_info_id>90640</job_info_id>
+                    <job_title>Operations Agent/agent des opérations</job_title>
                     <labor_Protection>false</labor_Protection>
                     <last_modified_by>200758</last_modified_by>
                     <last_modified_on>2025-08-02T14:15:04.000Z</last_modified_on>
                     <location>0720-0001</location>
-                    <manager_assignment_id_external>00100229</manager_assignment_id_external>
-                    <manager_employment_id>736</manager_employment_id>
-                    <manager_id>00100229</manager_id>
-                    <manager_person_id>2005</manager_person_id>
-                    <manager_person_id_external>00100229</manager_person_id_external>
-                    <manager_person_uuid>C2A81284070D4FD6A930308A2D03B2CC</manager_person_uuid>
+                    <manager_assignment_id_external>00013110</manager_assignment_id_external>
+                    <manager_employment_id>516</manager_employment_id>
+                    <manager_id>00013110</manager_id>
+                    <manager_person_id>1785</manager_person_id>
+                    <manager_person_id_external>00013110</manager_person_id_external>
+                    <manager_person_uuid>FA69BBFF7EBD4BE3B0AFFED9D1ADC798</manager_person_uuid>
                     <new_calc_avg_dnp>false</new_calc_avg_dnp>
                     <new_calc_avg_ppu>false</new_calc_avg_ppu>
-                    <pay_grade>CAN/01/31/14/00</pay_grade>
+                    <notes>HRC0018662</notes>
+                    <pay_grade>CAN/01/31/11/00</pay_grade>
                     <payment_in_lieu_of_notice>false</payment_in_lieu_of_notice>
                     <payScaleArea>CAN/01</payScaleArea>
-                    <payScaleGroup>CAN/01/31/14</payScaleGroup>
-                    <payScaleLevel>CAN/01/31/14/00</payScaleLevel>
+                    <payScaleGroup>CAN/01/31/11</payScaleGroup>
+                    <payScaleLevel>CAN/01/31/11/00</payScaleLevel>
                     <payScaleType>CAN/31</payScaleType>
                     <pcfm>false</pcfm>
                     <pension_protection>false</pension_protection>
                     <permit_indicator>false</permit_indicator>
-                    <position>412032</position>
-                    <positionEntryDate>2020-10-13</positionEntryDate>
+                    <position>404529</position>
+                    <positionEntryDate>2020-02-22</positionEntryDate>
                     <regular_temp>null</regular_temp>
                     <resident_vote>false</resident_vote>
                     <retired>false</retired>
@@ -413,7 +599,7 @@
                 </job_information>
                 <compensation_information>
                     <created_by>200550</created_by>
-                    <created_on_timestamp>2026-02-06T00:00:43.000Z</created_on_timestamp>
+                    <created_on_timestamp>2026-02-06T00:00:57.000Z</created_on_timestamp>
                     <custom_string1>7N</custom_string1>
                     <custom_string3>100</custom_string3>
                     <custom_string4>CAN/01/21/10/00</custom_string4>
@@ -424,30 +610,30 @@
                     <is_eligible_for_benefits>false</is_eligible_for_benefits>
                     <is_eligible_for_car>false</is_eligible_for_car>
                     <last_modified_by>200550</last_modified_by>
-                    <last_modified_on>2026-02-06T00:00:43.000Z</last_modified_on>
+                    <last_modified_on>2026-02-06T00:00:57.000Z</last_modified_on>
                     <pay_group>01</pay_group>
                     <seq_number>2</seq_number>
                     <start_date>2026-01-01</start_date>
                     <paycompensation_recurring>
                         <annualizationFactor>1.0</annualizationFactor>
                         <created_by>200550</created_by>
-                        <created_on_timestamp>2026-02-06T00:00:43.000Z</created_on_timestamp>
+                        <created_on_timestamp>2026-02-06T00:00:57.000Z</created_on_timestamp>
                         <currency_code>CAD</currency_code>
                         <end_date>9999-12-31</end_date>
                         <frequency>ANN</frequency>
                         <is_target>false</is_target>
                         <last_modified_by>200550</last_modified_by>
-                        <last_modified_on>2026-02-06T00:00:43.000Z</last_modified_on>
+                        <last_modified_on>2026-02-06T00:00:57.000Z</last_modified_on>
                         <pay_component>9993</pay_component>
                         <pay_component_type>AMOUNT</pay_component_type>
-                        <paycompvalue>85467.0</paycompvalue>
+                        <paycompvalue>63616.0</paycompvalue>
                         <seq_number>2</seq_number>
                         <start_date>2026-01-01</start_date>
                     </paycompensation_recurring>
                 </compensation_information>
                 <compensation_information>
                     <created_by>200550</created_by>
-                    <created_on_timestamp>2025-02-07T05:43:22.000Z</created_on_timestamp>
+                    <created_on_timestamp>2025-02-07T05:41:50.000Z</created_on_timestamp>
                     <custom_string1>7N</custom_string1>
                     <custom_string3>100</custom_string3>
                     <custom_string4>CAN/01/21/10/00</custom_string4>
@@ -458,23 +644,23 @@
                     <is_eligible_for_benefits>false</is_eligible_for_benefits>
                     <is_eligible_for_car>false</is_eligible_for_car>
                     <last_modified_by>200550</last_modified_by>
-                    <last_modified_on>2025-02-07T05:43:22.000Z</last_modified_on>
+                    <last_modified_on>2025-02-07T05:41:50.000Z</last_modified_on>
                     <pay_group>01</pay_group>
                     <seq_number>2</seq_number>
                     <start_date>2025-01-01</start_date>
                     <paycompensation_recurring>
                         <annualizationFactor>1.0</annualizationFactor>
                         <created_by>200550</created_by>
-                        <created_on_timestamp>2025-02-07T05:43:22.000Z</created_on_timestamp>
+                        <created_on_timestamp>2025-02-07T05:41:50.000Z</created_on_timestamp>
                         <currency_code>CAD</currency_code>
                         <end_date>2025-12-31</end_date>
                         <frequency>ANN</frequency>
                         <is_target>false</is_target>
                         <last_modified_by>200550</last_modified_by>
-                        <last_modified_on>2025-02-07T05:43:22.000Z</last_modified_on>
+                        <last_modified_on>2025-02-07T05:41:50.000Z</last_modified_on>
                         <pay_component>9993</pay_component>
                         <pay_component_type>AMOUNT</pay_component_type>
-                        <paycompvalue>81397.0</paycompvalue>
+                        <paycompvalue>62369.0</paycompvalue>
                         <seq_number>2</seq_number>
                         <start_date>2025-01-01</start_date>
                     </paycompensation_recurring>
@@ -482,7 +668,7 @@
                 <compensation_information>
                     <created_by>200550</created_by>
                     <created_on_timestamp>2024-11-14T22:09:09.000Z</created_on_timestamp>
-                    <custom_string1>8G</custom_string1>
+                    <custom_string1>7N</custom_string1>
                     <custom_string3>100</custom_string3>
                     <custom_string4>CAN/01/21/10/00</custom_string4>
                     <custom_string7>N</custom_string7>
@@ -491,8 +677,8 @@
                     <event_reason>KX</event_reason>
                     <is_eligible_for_benefits>false</is_eligible_for_benefits>
                     <is_eligible_for_car>false</is_eligible_for_car>
-                    <last_modified_by>200228</last_modified_by>
-                    <last_modified_on>2024-11-19T16:21:19.000Z</last_modified_on>
+                    <last_modified_by>200550</last_modified_by>
+                    <last_modified_on>2024-11-14T22:09:09.000Z</last_modified_on>
                     <pay_group>01</pay_group>
                     <seq_number>1</seq_number>
                     <start_date>2024-12-31</start_date>
@@ -504,11 +690,11 @@
                         <end_date>2024-12-31</end_date>
                         <frequency>ANN</frequency>
                         <is_target>false</is_target>
-                        <last_modified_by>200228</last_modified_by>
-                        <last_modified_on>2024-11-19T16:21:19.000Z</last_modified_on>
+                        <last_modified_by>200550</last_modified_by>
+                        <last_modified_on>2024-11-14T22:09:09.000Z</last_modified_on>
                         <pay_component>9993</pay_component>
                         <pay_component_type>AMOUNT</pay_component_type>
-                        <paycompvalue>78266.0</paycompvalue>
+                        <paycompvalue>61146.0</paycompvalue>
                         <seq_number>1</seq_number>
                         <start_date>2024-12-31</start_date>
                     </paycompensation_recurring>
@@ -541,48 +727,36 @@
                         <last_modified_on>2025-08-02T14:33:20.000Z</last_modified_on>
                         <pay_component>9993</pay_component>
                         <pay_component_type>AMOUNT</pay_component_type>
-                        <paycompvalue>78266.0</paycompvalue>
+                        <paycompvalue>61146.0</paycompvalue>
                         <seq_number>1</seq_number>
                         <start_date>2024-12-28</start_date>
                     </paycompensation_recurring>
                 </compensation_information>
                 <paycompensation_non_recurring>
-                    <created_by>IBMadminXUIR</created_by>
-                    <created_on_timestamp>2026-08-13T20:17:04.000Z</created_on_timestamp>
-                    <currency_code>CAD</currency_code>
-                    <last_modified_by>IBMadminXUIR</last_modified_by>
-                    <last_modified_on>2026-08-13T20:17:04.000Z</last_modified_on>
-                    <pay_component_code>1172_15</pay_component_code>
-                    <pay_component_type>AMOUNT</pay_component_type>
-                    <pay_date>2026-08-13</pay_date>
-                    <sequence_number>414a4c49-7253-4c7f-b208-694679511201</sequence_number>
-                    <value>150.0</value>
-                </paycompensation_non_recurring>
-                <paycompensation_non_recurring>
                     <created_by>200550</created_by>
-                    <created_on_timestamp>2026-02-06T00:00:43.000Z</created_on_timestamp>
+                    <created_on_timestamp>2026-02-06T00:00:57.000Z</created_on_timestamp>
                     <currency_code>CAD</currency_code>
                     <custom_string1>2025</custom_string1>
                     <last_modified_by>200550</last_modified_by>
-                    <last_modified_on>2026-02-06T00:00:43.000Z</last_modified_on>
+                    <last_modified_on>2026-02-06T00:00:57.000Z</last_modified_on>
                     <pay_component_code>9994</pay_component_code>
                     <pay_component_type>AMOUNT</pay_component_type>
                     <pay_date>2026-02-19</pay_date>
-                    <sequence_number>cef790eb-9e7c-4ba0-a3bd-891522777f40</sequence_number>
-                    <value>8140.0</value>
+                    <sequence_number>6f048a30-921f-4f0e-8728-815612205279</sequence_number>
+                    <value>2495.0</value>
                 </paycompensation_non_recurring>
                 <paycompensation_non_recurring>
                     <created_by>200550</created_by>
-                    <created_on_timestamp>2025-02-07T05:43:22.000Z</created_on_timestamp>
+                    <created_on_timestamp>2025-02-07T05:41:50.000Z</created_on_timestamp>
                     <currency_code>CAD</currency_code>
                     <custom_string1>2024</custom_string1>
                     <last_modified_by>200550</last_modified_by>
-                    <last_modified_on>2025-02-07T05:43:22.000Z</last_modified_on>
+                    <last_modified_on>2025-02-07T05:41:50.000Z</last_modified_on>
                     <pay_component_code>9994</pay_component_code>
                     <pay_component_type>AMOUNT</pay_component_type>
                     <pay_date>2025-02-20</pay_date>
-                    <sequence_number>9b9f541e-7774-48ea-a817-5c06fddf4cf8</sequence_number>
-                    <value>5479.0</value>
+                    <sequence_number>ceeb31ed-7b23-43cb-87de-9ebd9dcb5de7</sequence_number>
+                    <value>1834.0</value>
                 </paycompensation_non_recurring>
                 <PaymentInformationV3>
                     <createdBy>00101825</createdBy>
@@ -592,31 +766,48 @@
                     <lastModifiedBy>00101825</lastModifiedBy>
                     <lastModifiedDate>2017-11-06T21:25:28.000Z</lastModifiedDate>
                     <PaymentInformationDetailV3>
-                        <accountNumber>0028503</accountNumber>
-                        <accountOwner>Maria Reda</accountOwner>
-                        <bank>611151</bank>
+                        <accountNumber>5341391</accountNumber>
+                        <accountOwner>Donald Caron</accountOwner>
+                        <bank>300541</bank>
                         <bankCountry>CAN</bankCountry>
                         <createdBy>00101825</createdBy>
                         <createdDate>2017-11-06T21:25:28.000Z</createdDate>
                         <currency>CAD</currency>
                         <cust_acknowledgement>Y</cust_acknowledgement>
-                        <cust_BankCity>VERDUN</cust_BankCity>
-                        <externalCode>48133</externalCode>
+                        <cust_BankCity>BROSSARD</cust_BankCity>
+                        <externalCode>48112</externalCode>
                         <lastModifiedBy>00101825</lastModifiedBy>
                         <lastModifiedDate>2017-11-06T21:25:28.000Z</lastModifiedDate>
                         <paymentMethod>05</paymentMethod>
                         <paySequence>0</paySequence>
                         <payType>MAIN</payType>
-                        <routingNumber>00611151</routingNumber>
+                        <routingNumber>00300541</routingNumber>
                     </PaymentInformationDetailV3>
                 </PaymentInformationV3>
                 <associated_employee_information>
-                    <per_person_uuid>C2A81284070D4FD6A930308A2D03B2CC</per_person_uuid>
-                    <person_id>2005</person_id>
-                    <person_id_external>00100229</person_id_external>
+                    <per_person_uuid>61284F2F1AF04B0EA40CE4E687C32F61</per_person_uuid>
+                    <person_id>1609</person_id>
+                    <person_id_external>00010622</person_id_external>
                     <associated_employee_employment_information>
-                        <employment_id>736</employment_id>
-                        <user_id>00100229</user_id>
+                        <employment_id>340</employment_id>
+                        <user_id>00010622</user_id>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>R</emplStatus>
+                            <end_date>9999-12-31</end_date>
+                            <seq_number>1</seq_number>
+                            <start_date>2024-08-17</start_date>
+                        </associated_employee_job_information>
+                    </associated_employee_employment_information>
+                </associated_employee_information>
+                <associated_employee_information>
+                    <per_person_uuid>FA69BBFF7EBD4BE3B0AFFED9D1ADC798</per_person_uuid>
+                    <person_id>1785</person_id>
+                    <person_id_external>00013110</person_id_external>
+                    <associated_employee_employment_information>
+                        <employment_id>516</employment_id>
+                        <user_id>00013110</user_id>
                         <associated_employee_job_information>
                             <company>BANK</company>
                             <company_territory_code>CAN</company_territory_code>
@@ -630,6 +821,22 @@
                             <company_territory_code>CAN</company_territory_code>
                             <emplStatus>A</emplStatus>
                             <end_date>2026-05-06</end_date>
+                            <seq_number>2</seq_number>
+                            <start_date>2026-01-03</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>2026-01-03</end_date>
+                            <seq_number>1</seq_number>
+                            <start_date>2026-01-03</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>2026-01-02</end_date>
                             <seq_number>1</seq_number>
                             <start_date>2025-08-07</start_date>
                         </associated_employee_job_information>
@@ -651,26 +858,63 @@
                         </associated_employee_job_information>
                     </associated_employee_employment_information>
                 </associated_employee_information>
-                <deduction_recurring>
-                    <createdBy>IBMadminXUIR</createdBy>
-                    <createdDate>2026-08-13T19:50:24.000Z</createdDate>
-                    <effectiveEndDate>9999-12-31</effectiveEndDate>
-                    <effectiveStartDate>2026-08-13</effectiveStartDate>
-                    <lastModifiedBy>IBMadminXUIR</lastModifiedBy>
-                    <lastModifiedDate>2026-08-13T19:50:24.000Z</lastModifiedDate>
-                    <deduction_recurring_item>
-                        <amount>100.0</amount>
-                        <annualizationFactor>26.0</annualizationFactor>
-                        <createdBy>IBMadminXUIR</createdBy>
-                        <createdDate>2026-08-13T19:50:24.000Z</createdDate>
-                        <currency>CAD</currency>
-                        <frequency>BWK</frequency>
-                        <lastModifiedBy>IBMadminXUIR</lastModifiedBy>
-                        <lastModifiedDate>2026-08-13T19:50:24.000Z</lastModifiedDate>
-                        <payComponentCategory>AMOUNT</payComponentCategory>
-                        <payComponentType>1172</payComponentType>
-                    </deduction_recurring_item>
-                </deduction_recurring>
+                <associated_employee_information>
+                    <per_person_uuid>E72C4E90662F4DF1A124C80A7A5F6FC6</per_person_uuid>
+                    <person_id>14299</person_id>
+                    <person_id_external>202421</person_id_external>
+                    <associated_employee_employment_information>
+                        <employment_id>12850</employment_id>
+                        <user_id>202421</user_id>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>9999-12-31</end_date>
+                            <seq_number>1</seq_number>
+                            <start_date>2026-05-07</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>2026-05-06</end_date>
+                            <seq_number>2</seq_number>
+                            <start_date>2026-01-03</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>2026-01-03</end_date>
+                            <seq_number>1</seq_number>
+                            <start_date>2026-01-03</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>2026-01-02</end_date>
+                            <seq_number>1</seq_number>
+                            <start_date>2025-08-07</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>2025-08-06</end_date>
+                            <seq_number>1</seq_number>
+                            <start_date>2025-01-09</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>A</emplStatus>
+                            <end_date>2025-01-08</end_date>
+                            <seq_number>1</seq_number>
+                            <start_date>2024-12-28</start_date>
+                        </associated_employee_job_information>
+                    </associated_employee_employment_information>
+                </associated_employee_information>
             </employment_information>
             <national_id_card>
                 <card_type>sin</card_type>
@@ -680,47 +924,47 @@
                 <isPrimary>true</isPrimary>
                 <last_modified_by>00101825</last_modified_by>
                 <last_modified_on>2017-11-06T21:06:18.000Z</last_modified_on>
-                <national_id>265-865-618</national_id>
+                <national_id>257-434-845</national_id>
             </national_id_card>
             <DRTMPurgeStatusOverview>
                 <DRTMPurgeStatus>
                     <node_name>address_information</node_name>
-                    <person_id>1608</person_id>
+                    <person_id>1584</person_id>
                     <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>compensation_information</node_name>
-                    <user_id>00010615</user_id>
+                    <user_id>00010519</user_id>
                     <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>email_information</node_name>
-                    <person_id>1608</person_id>
+                    <person_id>1584</person_id>
                     <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>national_id_card</node_name>
-                    <person_id>1608</person_id>
+                    <person_id>1584</person_id>
                     <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>paycompensation_non_recurring</node_name>
-                    <user_id>00010615</user_id>
+                    <user_id>00010519</user_id>
                     <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>personal_information</node_name>
-                    <person_id>1608</person_id>
+                    <person_id>1584</person_id>
                     <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>phone_information</node_name>
-                    <person_id>1608</person_id>
+                    <person_id>1584</person_id>
                     <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
             </DRTMPurgeStatusOverview>
         </person>
-        <execution_timestamp>2026-08-27T20:23:29.000Z</execution_timestamp>
+        <execution_timestamp>2026-08-27T19:01:16.000Z</execution_timestamp>
         <version_id>2605P0</version_id>
     </CompoundEmployee>
 </queryCompoundEmployeeResponse>

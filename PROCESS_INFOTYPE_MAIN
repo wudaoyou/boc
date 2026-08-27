@@ -1,0 +1,128 @@
+  METHOD if_ecpao_in_process_infotype~process_infotype.
+
+    IF infotype = '0000'.
+      process_infotype_0000(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0001'.
+      process_infotype_0001(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0002'.
+      process_infotype_0002(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0008'.
+      process_infotype_0008(
+        EXPORTING
+          ec_payload = ec_payload
+          pernr = pernr
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0006'.
+      process_infotype_0006(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0007'.
+      process_infotype_0007(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+
+    IF infotype = '0009'.
+      process_infotype_0009(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0017'.
+      process_infotype_0017(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0019'.
+      process_infotype_0019(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+
+    ENDIF.
+
+    IF infotype = '0033'.
+      process_infotype_0033(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+    ENDIF.
+
+    IF infotype = '0105'.
+      process_infotype_0105(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+    ENDIF.
+
+
+    IF infotype = '0171'.
+      process_infotype_0171(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+    ENDIF.
+
+    IF infotype = '0041'.
+      process_infotype_0041(
+        EXPORTING
+          ec_payload = ec_payload
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab ).
+    ENDIF.
+
+    IF infotype = '0015'.
+      process_infotype_0015(
+        EXPORTING
+          ec_payload = ec_payload
+          pernr = pernr
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab
+        field_prim_tab = erp_field_prim_tab ).
+    ENDIF.
+  ENDMETHOD.

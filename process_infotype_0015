@@ -7,11 +7,12 @@
           wa_field   TYPE ecpao_in_s_field_value_pair,
           lv_dummy   TYPE string.
 
-    CALL METHOD get_ws13
+    CALL METHOD get_current_ws13
       EXPORTING
+        pernr      = pernr
         ec_payload = ec_payload
       CHANGING
-        ws13_tab = lt_payload.
+        ws13_tab   = lt_payload.
 
     SORT lt_payload BY begda ASCENDING.
 

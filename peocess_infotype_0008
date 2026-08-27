@@ -15,11 +15,12 @@
 
     lt_p0008 = pnnnn_tab.
 
-    CALL METHOD ec_payload->get_ec_payload
+    CALL METHOD get_current_ws11
       EXPORTING
-        ec_templ_id    = 'WS_11'
-      IMPORTING
-        ec_payload_tab = lt_payload_11.
+        pernr      = pernr
+        ec_payload = ec_payload
+      CHANGING
+        ws11_tab   = lt_payload_11.
 
     CALL METHOD ec_payload->get_ec_payload
       EXPORTING

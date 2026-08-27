@@ -116,6 +116,16 @@
           pnnnn_tab  = pnnnn_primary_tab ).
     ENDIF.
 
+    IF infotype = '0014'.
+      process_infotype_0014(
+        EXPORTING
+          ec_payload = ec_payload
+          pernr = pernr
+        CHANGING
+          pnnnn_tab  = pnnnn_primary_tab
+        field_prim_tab = erp_field_prim_tab ).
+    ENDIF.
+
     IF infotype = '0015'.
       process_infotype_0015(
         EXPORTING

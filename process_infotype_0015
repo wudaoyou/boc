@@ -18,7 +18,6 @@
     LOOP AT lt_payload INTO wa_payload.
       CLEAR ls_p0015.
 
-      ls_p0015-mandt = sy-mandt.
       ls_p0015-infty = '0015'.
       ls_p0015-pernr = pernr.
       ls_p0015-begda = wa_payload-begda.

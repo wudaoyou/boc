@@ -1,0 +1,91 @@
+  METHOD process_infotype_0008.
+    CONSTANTS c_annualizationpayfreq TYPE p LENGTH 6 DECIMALS 3 VALUE '26.088'.
+    DATA: lt_p0008     TYPE TABLE OF p0008.
+    FIELD-SYMBOLS:  <fs_p0008> TYPE p0008.
+    DATA lt_payload_11   TYPE ecpao_t_ec_payload_badi.
+    DATA wa_payload_11   TYPE ecpao_s_ec_payload_badi.
+    DATA lt_payload_4   TYPE ecpao_t_ec_payload_badi.
+    DATA wa_payload_4   TYPE ecpao_s_ec_payload_badi.
+    DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
+         wa_fields TYPE ecpao_in_s_field_value_pair.
+
+    DATA lv_ANSAL TYPE string.
+    DATA lv_bsgrd TYPE string.
+
+
+    lt_p0008 = pnnnn_tab.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_11'
+      IMPORTING
+        ec_payload_tab = lt_payload_11.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_4'
+      IMPORTING
+        ec_payload_tab = lt_payload_4.
+
+
+
+    LOOP AT lt_p0008 ASSIGNING <fs_p0008>.
+      "ws-11
+      LOOP AT lt_payload_11 INTO wa_payload_11
+                     WHERE begda <= <fs_p0008>-endda
+                     AND   endda >= <fs_p0008>-begda.
+      ENDLOOP.
+      IF sy-subrc = 0.
+        lt_fields = wa_payload_11-field_value_pair_tab.
+        LOOP AT lt_fields INTO  wa_fields.
+          IF wa_fields-ec_fld_name = 'customString1'.
+            IF wa_fields-ec_fld_value = 'NA'.
+              <fs_p0008>-preas = ''.
+            ENDIF.
+          ENDIF.
+        ENDLOOP.
+      ENDIF.
+
+      "ws-4
+      LOOP AT lt_payload_4 INTO wa_payload_4
+               WHERE begda <= <fs_p0008>-endda
+               AND   endda >= <fs_p0008>-begda.
+      ENDLOOP.
+      IF sy-subrc = 0.
+        lt_fields = wa_payload_4-field_value_pair_tab.
+        LOOP AT lt_fields INTO  wa_fields.
+          IF wa_fields-ec_fld_name = 'fte'.
+            lv_bsgrd = wa_fields-ec_fld_value * 100.
+            <fs_p0008>-bsgrd = lv_bsgrd.
+          ENDIF.
+        ENDLOOP.
+      ENDIF.
+    ENDLOOP.
+
+
+
+    LOOP AT lt_p0008 ASSIGNING <fs_p0008>.
+      IF <fs_p0008>-trfar <> '11' AND <fs_p0008>-lga01 = '9993'.
+        <fs_p0008>-lga01 = '1003'.
+        <fs_p0008>-ansal = <fs_p0008>-bet01.
+        <fs_p0008>-cpind = 'S'.
+        <fs_p0008>-waers = 'CADHR'.
+        <fs_p0008>-bet01 = <fs_p0008>-bet01 / c_annualizationpayfreq * 100.
+
+        "clear <fs_p0008>-bet01.
+
+      ELSEIF <fs_p0008>-trfar = '11'.
+        CLEAR <fs_p0008>-trfst.
+        <fs_p0008>-lga01 = '1745'.
+        <fs_p0008>-lga02 = '1805'.
+        <fs_p0008>-bet01 = 0.
+        <fs_p0008>-cpind = 'T'.
+        <fs_p0008>-bet01 = <fs_p0008>-bet01 * 100.
+      ELSE.
+        <fs_p0008>-bet01 = <fs_p0008>-bet01 * 100.
+      ENDIF.
+    ENDLOOP.
+
+    pnnnn_tab = lt_p0008.
+
+  ENDMETHOD.

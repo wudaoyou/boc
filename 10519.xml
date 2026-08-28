@@ -930,6 +930,24 @@
                     <lastModifiedBy>IBMadminXUIR</lastModifiedBy>
                     <lastModifiedDate>2026-08-27T17:17:45.000Z</lastModifiedDate>
                 </cust_eventRecords>
+                <cust_savingsPlans>
+                    <createdBy>IBMadminXUIR</createdBy>
+                    <createdDate>2026-08-27T17:18:29.000Z</createdDate>
+                    <cust_benefitArea>7A</cust_benefitArea>
+                    <cust_EEcontrVariant>CON1</cust_EEcontrVariant>
+                    <cust_effectiveEndDate>2026-09-30</cust_effectiveEndDate>
+                    <cust_enrollmentType>Manually</cust_enrollmentType>
+                    <cust_period>Bi-weekly</cust_period>
+                    <cust_plan>12DB</cust_plan>
+                    <cust_planType>PENS</cust_planType>
+                    <cust_regContrPostTaxPercentage>10.5</cust_regContrPostTaxPercentage>
+                    <cust_regContrPreTaxPercentage>8.0</cust_regContrPreTaxPercentage>
+                    <cust_vestingRule>VESO</cust_vestingRule>
+                    <effectiveEndDate>9999-12-31</effectiveEndDate>
+                    <effectiveStartDate>2026-08-27</effectiveStartDate>
+                    <lastModifiedBy>IBMadminXUIR</lastModifiedBy>
+                    <lastModifiedDate>2026-08-27T17:18:29.000Z</lastModifiedDate>
+                </cust_savingsPlans>
             </employment_information>
             <national_id_card>
                 <card_type>sin</card_type>
@@ -979,7 +997,7 @@
                 </DRTMPurgeStatus>
             </DRTMPurgeStatusOverview>
         </person>
-        <execution_timestamp>2026-08-28T06:02:31.000Z</execution_timestamp>
+        <execution_timestamp>2026-08-28T16:15:48.000Z</execution_timestamp>
         <version_id>2605P0</version_id>
     </CompoundEmployee>
 </queryCompoundEmployeeResponse>

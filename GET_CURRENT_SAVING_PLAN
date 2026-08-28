@@ -1,0 +1,43 @@
+  METHOD get_current_saving_plan.
+    DATA:
+      lt_ws3                 TYPE ecpao_t_ec_payload_badi,
+      wa_ws3                 TYPE ecpao_s_ec_payload_badi,
+      lt_saving_plan         TYPE ecpao_t_ec_payload_badi,
+      lt_saving_plan_current TYPE ecpao_t_ec_payload_badi,
+      wa_saving_plan         TYPE ecpao_s_ec_payload_badi,
+      wa_field               TYPE ecpao_in_s_field_value_pair,
+      lv_payload_user        TYPE pernr_d.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_3'
+      IMPORTING
+        ec_payload_tab = lt_ws3.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = '9_SAV_PLAN'
+      IMPORTING
+        ec_payload_tab = lt_saving_plan.
+
+    LOOP AT lt_ws3 INTO wa_ws3.
+      CLEAR lv_payload_user.
+
+      READ TABLE wa_ws3-field_value_pair_tab
+        INTO wa_field
+        WITH KEY ec_fld_name = 'userId'.
+
+      IF sy-subrc = 0.
+        lv_payload_user = wa_field-ec_fld_value.
+      ENDIF.
+
+      IF lv_payload_user IS NOT INITIAL AND lv_payload_user = pernr.
+        LOOP AT lt_saving_plan INTO wa_saving_plan
+          WHERE parent_node_number = wa_ws3-node_number.
+          APPEND wa_saving_plan TO lt_saving_plan_current.
+        ENDLOOP.
+      ENDIF.
+    ENDLOOP.
+
+    saving_plan_tab = lt_saving_plan_current.
+  ENDMETHOD.

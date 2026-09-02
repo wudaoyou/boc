@@ -797,6 +797,14 @@
                             <emplStatus>R</emplStatus>
                             <end_date>9999-12-31</end_date>
                             <seq_number>1</seq_number>
+                            <start_date>2026-08-01</start_date>
+                        </associated_employee_job_information>
+                        <associated_employee_job_information>
+                            <company>BANK</company>
+                            <company_territory_code>CAN</company_territory_code>
+                            <emplStatus>R</emplStatus>
+                            <end_date>2026-07-31</end_date>
+                            <seq_number>1</seq_number>
                             <start_date>2024-08-17</start_date>
                         </associated_employee_job_information>
                     </associated_employee_employment_information>
@@ -963,41 +971,41 @@
                 <DRTMPurgeStatus>
                     <node_name>address_information</node_name>
                     <person_id>1584</person_id>
-                    <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
+                    <highestAuditPurgeDateTime>2024-08-29T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>compensation_information</node_name>
                     <user_id>00010519</user_id>
-                    <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
+                    <highestAuditPurgeDateTime>2024-08-29T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>email_information</node_name>
                     <person_id>1584</person_id>
-                    <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
+                    <highestAuditPurgeDateTime>2024-08-29T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>national_id_card</node_name>
                     <person_id>1584</person_id>
-                    <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
+                    <highestAuditPurgeDateTime>2024-08-29T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>paycompensation_non_recurring</node_name>
                     <user_id>00010519</user_id>
-                    <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
+                    <highestAuditPurgeDateTime>2024-08-29T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>personal_information</node_name>
                     <person_id>1584</person_id>
-                    <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
+                    <highestAuditPurgeDateTime>2024-08-29T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>phone_information</node_name>
                     <person_id>1584</person_id>
-                    <highestAuditPurgeDateTime>2024-08-22T00:00:00.000Z</highestAuditPurgeDateTime>
+                    <highestAuditPurgeDateTime>2024-08-29T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
             </DRTMPurgeStatusOverview>
         </person>
-        <execution_timestamp>2026-08-28T16:15:48.000Z</execution_timestamp>
+        <execution_timestamp>2026-09-02T21:29:35.000Z</execution_timestamp>
         <version_id>2605P0</version_id>
     </CompoundEmployee>
 </queryCompoundEmployeeResponse>

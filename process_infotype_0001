@@ -1,0 +1,57 @@
+METHOD process_infotype_0001.
+
+  DATA: lt_p0001     TYPE TABLE OF p0001,
+        lt_payload   TYPE ecpao_t_ec_payload_badi,
+        wa_payload   TYPE ecpao_s_ec_payload_badi,
+        lt_fields    TYPE TABLE OF ecpao_in_s_field_value_pair,
+        wa_field     TYPE ecpao_in_s_field_value_pair,
+        massn        TYPE string,
+        massg        TYPE string.
+
+  FIELD-SYMBOLS: <fs_p0001> TYPE p0001.
+
+  lt_p0001 = pnnnn_tab.
+
+  " Retrieve EC payload for given template
+  CALL METHOD ec_payload->get_ec_payload
+    EXPORTING
+      ec_templ_id    = 'WS_4'
+    IMPORTING
+      ec_payload_tab = lt_payload.
+
+  LOOP AT lt_p0001 ASSIGNING <fs_p0001>.
+    CLEAR: massn, massg.
+
+    LOOP AT lt_payload INTO wa_payload
+         WHERE begda <= <fs_p0001>-endda
+           AND endda >= <fs_p0001>-begda.
+      lt_fields = wa_payload-field_value_pair_tab.
+
+      READ TABLE lt_fields INTO wa_field WITH KEY ec_fld_name = 'event'.
+      IF sy-subrc = 0.
+        massn = wa_field-ec_fld_value.
+      ENDIF.
+
+      " If event = '26', find 'eventReason' value
+      IF massn = '26'.
+        READ TABLE lt_fields INTO wa_field WITH KEY ec_fld_name = 'eventReason'.
+        IF sy-subrc = 0.
+          massg = wa_field-ec_fld_value.
+        ENDIF.
+      ENDIF.
+
+      EXIT.
+    ENDLOOP.
+
+    " If eventReason is one of the specified codes, set fields accordingly
+    IF massg IS NOT INITIAL AND
+       ( massg = 'HA' OR massg = 'HB' OR massg = 'HC' OR massg = 'HE' OR massg = 'VT' ).
+      <fs_p0001>-abkrs = '03'.
+      <fs_p0001>-plans = '99999999'.
+      CLEAR: <fs_p0001>-kostl, <fs_p0001>-vdsk1, <fs_p0001>-orgeh, <fs_p0001>-stell.
+    ENDIF.
+  ENDLOOP.
+
+  pnnnn_tab = lt_p0001.
+
+ENDMETHOD.

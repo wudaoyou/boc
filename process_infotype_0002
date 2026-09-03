@@ -1,0 +1,25 @@
+  METHOD process_infotype_0002.
+    DATA: lt_p0002     TYPE TABLE OF p0002.
+    FIELD-SYMBOLS:  <fs_p0002> TYPE p0002.
+    DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
+    DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
+    DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
+         wa_fields TYPE ecpao_in_s_field_value_pair.
+    DATA lv_PERID TYPE PRDNI.
+    lt_p0002 = pnnnn_tab.
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_17'
+      IMPORTING
+        ec_payload_tab = lt_payload.
+
+    LOOP AT lt_p0002 ASSIGNING <fs_p0002>.
+      CLEAR : lv_PERID.
+      lv_PERID = <fs_p0002>-PERID.
+      IF lv_PERID is INITIAL.
+         lv_perid = '999999998'.
+      ENDIF.
+      <fs_p0002>-PERID = lv_PERID.
+    ENDLOOP.
+    pnnnn_tab = lt_p0002.
+  ENDMETHOD.

@@ -29,11 +29,20 @@ METHOD process_infotype_0105.
         CONTINUE.
     ENDCASE.
 
-    CALL METHOD ec_payload->get_ec_payload
-      EXPORTING
-        ec_templ_id    = lv_ec_templ_id
-      IMPORTING
-        ec_payload_tab = lt_payload.
+    IF lv_ec_templ_id = 'WS_3'.
+      CALL METHOD get_current_ws4_ws3
+        EXPORTING
+          pernr      = pernr
+          ec_payload = ec_payload
+        CHANGING
+          ws3_tab    = lt_payload.
+    ELSE.
+      CALL METHOD ec_payload->get_ec_payload
+        EXPORTING
+          ec_templ_id    = lv_ec_templ_id
+        IMPORTING
+          ec_payload_tab = lt_payload.
+    ENDIF.
 
     LOOP AT lt_payload INTO wa_payload.
       lt_fields = wa_payload-field_value_pair_tab.

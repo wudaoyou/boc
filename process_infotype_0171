@@ -20,11 +20,12 @@ METHOD process_infotype_0171.
   lt_in = pnnnn_tab.
 
   "——3—— fetch your BAdI payload once
-  CALL METHOD ec_payload->get_ec_payload
+  CALL METHOD get_current_ws4_ws3
     EXPORTING
-      ec_templ_id    = 'WS_4'
-    IMPORTING
-      ec_payload_tab = lt_payload.
+      pernr      = pernr
+      ec_payload = ec_payload
+    CHANGING
+      ws4_tab    = lt_payload.
 
   "——3.5—— Check for pensioner in lt_payload (endda = 99991231, employeeClass = 9)
   LOOP AT lt_payload INTO wa_payload WHERE endda = '99991231'.

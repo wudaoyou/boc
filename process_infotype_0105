@@ -1,0 +1,108 @@
+METHOD process_infotype_0105.
+  DATA: lt_p0105     TYPE TABLE OF p0105.
+  FIELD-SYMBOLS: <fs_p0105> TYPE p0105.
+  FIELD-SYMBOLS: <fs_result> type p0105.
+  DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
+  DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
+  DATA: lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
+        wa_fields TYPE ecpao_in_s_field_value_pair.
+  DATA lv_ec_templ_id TYPE ecpao_ectempl_id.
+  DATA lv_email_addr TYPE comm_id_long.
+  DATA lv_found TYPE abap_bool.
+
+  DATA lt_result TYPE TABLE OF p0105. " Table to collect records to keep
+
+  lt_p0105 = pnnnn_tab.
+
+  LOOP AT lt_p0105 ASSIGNING <fs_p0105>.
+    CLEAR lv_ec_templ_id.
+
+    CASE <fs_p0105>-usrty.
+      WHEN '0001'.
+*        lv_ec_templ_id = 'WS_2'.
+        lv_ec_templ_id = 'WS_3'.
+      WHEN '0010'.
+        lv_ec_templ_id = 'WS_7'.
+      WHEN OTHERS.
+        " For other types, just add the record and continue
+        APPEND <fs_p0105> TO lt_result.
+        CONTINUE.
+    ENDCASE.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = lv_ec_templ_id
+      IMPORTING
+        ec_payload_tab = lt_payload.
+
+    LOOP AT lt_payload INTO wa_payload.
+      lt_fields = wa_payload-field_value_pair_tab.
+
+      IF <fs_p0105>-usrty = '0001'.
+*        LOOP AT lt_fields INTO wa_fields.
+*          CHECK wa_fields-ec_fld_name = 'logonUserName'.
+*          CLEAR <fs_p0105>-usrid.
+*          SPLIT wa_fields-ec_fld_value AT '@' INTO <fs_p0105>-usrid DATA(dummy).
+*        ENDLOOP.
+        LOOP AT lt_fields INTO wa_fields.
+          CHECK wa_fields-ec_fld_name = 'customString2'.
+          CLEAR <fs_p0105>-usrid.
+           <fs_p0105>-usrid = wa_fields-ec_fld_value.
+        ENDLOOP.
+        " Only add if not a duplicate
+        CLEAR lv_found.
+        LOOP AT lt_result ASSIGNING <fs_result>
+          WHERE subty = <fs_p0105>-subty
+            AND begda = <fs_p0105>-begda
+            AND endda = <fs_p0105>-endda.
+          lv_found = abap_true.
+          EXIT.
+        ENDLOOP.
+        IF lv_found IS INITIAL.
+          APPEND <fs_p0105> TO lt_result.
+        ENDIF.
+
+      ELSEIF <fs_p0105>-usrty = '0010'.
+        DATA(lv_found_b) = abap_false.
+
+        LOOP AT lt_fields INTO wa_fields.
+          IF wa_fields-ec_fld_name = 'emailType' AND wa_fields-ec_fld_value = 'B'.
+            lv_found_b = abap_true.
+            EXIT.
+          ENDIF.
+        ENDLOOP.
+
+        IF lv_found_b = abap_true.
+          " Find emailAddress after emailType = B
+          CLEAR lv_email_addr.
+          LOOP AT lt_fields INTO wa_fields.
+            IF wa_fields-ec_fld_name = 'emailAddress'.
+              lv_email_addr = wa_fields-ec_fld_value.
+              EXIT.
+            ENDIF.
+          ENDLOOP.
+          <fs_p0105>-usrid_long = lv_email_addr.
+        ELSE.
+          CLEAR <fs_p0105>-usrid_long.
+        ENDIF.
+
+        IF <fs_p0105>-usrid_long IS NOT INITIAL.
+          CLEAR lv_found.
+          LOOP AT lt_result ASSIGNING <fs_result>
+            WHERE subty = <fs_p0105>-subty
+              AND begda = <fs_p0105>-begda
+              AND endda = <fs_p0105>-endda.
+            lv_found = abap_true.
+            EXIT.
+          ENDLOOP.
+          IF lv_found IS INITIAL.
+            APPEND <fs_p0105> TO lt_result.
+          ENDIF.
+        ENDIF.
+
+      ENDIF.
+    ENDLOOP.
+  ENDLOOP.
+
+  pnnnn_tab = lt_result.
+ENDMETHOD.

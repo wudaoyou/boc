@@ -1,0 +1,37 @@
+  METHOD process_infotype_0007.
+    DATA: lt_p0007     TYPE TABLE OF p0007.
+    FIELD-SYMBOLS:  <fs_p0007> TYPE p0007.
+    DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
+    DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
+    DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
+         wa_fields TYPE ecpao_in_s_field_value_pair.
+
+    lt_p0007 = pnnnn_tab.
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_4'
+      IMPORTING
+        ec_payload_tab = lt_payload.
+
+    LOOP AT lt_p0007 ASSIGNING <fs_p0007>.
+      LOOP AT lt_payload INTO wa_payload
+                         WHERE begda <= <fs_p0007>-endda
+                         AND   endda >= <fs_p0007>-begda.
+      ENDLOOP.
+      IF sy-subrc = 0.
+        lt_fields = wa_payload-field_value_pair_tab.
+        LOOP AT lt_fields INTO  wa_fields.
+          IF wa_fields-ec_fld_name = 'fte'.
+            IF wa_fields-ec_fld_value = '1.0'.
+              CLEAR <fs_p0007>-teilk.
+            ELSE.
+              <fs_p0007>-teilk = 'X'.
+            ENDIF.
+            <fs_p0007>-empct = <fs_p0007>-empct * 100.
+          ENDIF.
+        ENDLOOP.
+
+      ENDIF.
+    ENDLOOP.
+    pnnnn_tab = lt_p0007.
+  ENDMETHOD.

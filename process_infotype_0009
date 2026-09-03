@@ -1,0 +1,43 @@
+  method PROCESS_INFOTYPE_0009.
+    DATA: lt_p0009     TYPE TABLE OF p0009.
+    FIELD-SYMBOLS:  <fs_p0009> TYPE p0009.
+    DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
+    DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
+    DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
+         wa_fields TYPE ecpao_in_s_field_value_pair.
+    Data lv_bank_key type string.
+    data lv_city type bnka-ORT01.
+
+    lt_p0009 = pnnnn_tab.
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_14'
+      IMPORTING
+        ec_payload_tab = lt_payload.
+
+    LOOP AT lt_p0009 ASSIGNING <fs_p0009>.
+      LOOP AT lt_payload INTO wa_payload
+                         WHERE begda <= <fs_p0009>-endda
+                         AND   endda >= <fs_p0009>-begda.
+      ENDLOOP.
+      IF sy-subrc = 0.
+        lt_fields = wa_payload-field_value_pair_tab.
+        LOOP AT lt_fields INTO  wa_fields.
+          IF wa_fields-ec_fld_name = 'routingNumber'.
+
+            lv_bank_key = wa_fields-ec_fld_value.
+            select SINGLE ort01 INTO lv_city from bnka where bankl = lv_bank_key.
+             if sy-subrc = 0.
+               <fs_p0009>-BKORT = lv_city.
+             endif.
+
+
+          ENDIF.
+        ENDLOOP.
+
+      ENDIF.
+    ENDLOOP.
+    pnnnn_tab = lt_p0009.
+
+
+  endmethod.

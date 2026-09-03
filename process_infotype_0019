@@ -1,0 +1,118 @@
+METHOD process_infotype_0019.
+  "——1—— Work areas and tables
+  DATA: lt_in       TYPE TABLE OF p0019,
+        lt_out      TYPE TABLE OF p0019,
+        ls_record   TYPE p0019,
+        lv_new_date TYPE p0019-begda.
+
+  FIELD-SYMBOLS: <fs_in> TYPE p0019.
+
+  "—— Payload structures
+  DATA: lt_payload TYPE ecpao_t_ec_payload_badi,
+        wa_payload TYPE ecpao_s_ec_payload_badi,
+        lt_fields  TYPE TABLE OF ecpao_in_s_field_value_pair,
+        wa_field   TYPE ecpao_in_s_field_value_pair,
+        lv_event   TYPE string,
+        lv_type    TYPE string.
+
+  "——2—— Copy incoming records
+  lt_in = pnnnn_tab.
+
+  "——3—— Fetch your BAdI payload once
+  CALL METHOD ec_payload->get_ec_payload
+    EXPORTING
+      ec_templ_id    = 'WS_4'
+    IMPORTING
+      ec_payload_tab = lt_payload.
+
+  "——4—— Loop original records
+  LOOP AT lt_in ASSIGNING <fs_in>.
+    CLEAR: wa_payload, lt_fields, lv_event, lv_type.
+
+    " Find first overlapping payload slice
+    LOOP AT lt_payload INTO wa_payload
+          WHERE begda <= <fs_in>-endda
+            AND endda >= <fs_in>-begda.
+      EXIT.
+    ENDLOOP.
+    IF wa_payload IS INITIAL.
+      CONTINUE.
+    ENDIF.
+
+    " Pull all field/value pairs
+    lt_fields = wa_payload-field_value_pair_tab.
+
+    " Extract event
+    LOOP AT lt_fields INTO wa_field WHERE ec_fld_name = 'event'.
+      lv_event = wa_field-ec_fld_value.
+      EXIT.
+    ENDLOOP.
+
+    " Extract employeeType
+    LOOP AT lt_fields INTO wa_field WHERE ec_fld_name = 'employmentType'.
+      lv_type = wa_field-ec_fld_value.
+      EXIT.
+    ENDLOOP.
+
+    " Only for H|R events → build new record
+    IF ( lv_event = 'H' OR lv_event = 'R') and lv_type <> '7P'.
+      ls_record = <fs_in>.           " copy base record
+      ls_record-seqnr = '000'.
+      ls_record-bvmrk = space.
+      ls_record-begda = wa_payload-begda.
+
+      "—— Branch on type
+      IF lv_type = '7A' OR lv_type = '7B'.
+        " 7a/7b → subtype 7V, same-day dates
+        ls_record-subty = '7V'.
+        ls_record-tmart = '7V'.
+
+        CALL FUNCTION 'RP_CALC_DATE_IN_INTERVAL'
+          EXPORTING
+            date      = ls_record-begda
+            days      = '00'
+            months    = '00'
+            years     = 5
+          IMPORTING
+            calc_date = lv_new_date.
+        IF sy-subrc <> 0.
+          " In case of error, fall back to original date
+          lv_new_date = ls_record-begda.
+        ENDIF.
+
+        ls_record-endda = lv_new_date.
+        ls_record-termn = lv_new_date.
+        ls_record-bvmrk = '2'.
+
+      ELSEIF lv_type CA '7C 7D 7E 7F 7G 7H'.
+        " 7c–7h → subtype 7B, shift begda + 2 years, align endda/termn
+        ls_record-subty = '7B'.
+        ls_record-tmart = '7B'.
+
+        CALL FUNCTION 'RP_CALC_DATE_IN_INTERVAL'
+          EXPORTING
+            date      = ls_record-begda
+            days      = '00'
+            months    = '00'
+            years     = 2
+          IMPORTING
+            calc_date = lv_new_date.
+        IF sy-subrc <> 0.
+          " In case of error, fall back to original date
+          lv_new_date = ls_record-begda.
+        ENDIF.
+
+        "ls_record-begda  = lv_new_date.
+        ls_record-endda  = lv_new_date.
+        ls_record-termn  = lv_new_date.
+        ls_record-bvmrk = '2'.
+      ENDIF.
+
+      APPEND ls_record TO lt_out.
+    ENDIF.
+
+  ENDLOOP.
+
+  "——5—— Return only the new records
+  pnnnn_tab = lt_out.
+ENDMETHOD.

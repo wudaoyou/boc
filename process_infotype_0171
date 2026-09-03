@@ -1,0 +1,95 @@
+METHOD process_infotype_0171.
+  "——1—— work areas and tables
+  DATA: lt_in     TYPE TABLE OF p0171,      " original records
+        lt_out    TYPE TABLE OF p0171,      " only H/R → J/1 records
+        ls_record TYPE p0171.               " temp for loop
+
+  DATA isPensioner TYPE abap_bool VALUE abap_false.
+
+  FIELD-SYMBOLS: <fs_in>  TYPE p0171.
+
+  " payload structures
+  DATA: lt_payload TYPE ecpao_t_ec_payload_badi,
+        wa_payload TYPE ecpao_s_ec_payload_badi,
+        lt_fields  TYPE TABLE OF ecpao_in_s_field_value_pair,
+        wa_field   TYPE ecpao_in_s_field_value_pair,
+        lv_event   TYPE string,
+        lv_reason  TYPE string.
+
+  "——2—— copy incoming into lt_in
+  lt_in = pnnnn_tab.
+
+  "——3—— fetch your BAdI payload once
+  CALL METHOD ec_payload->get_ec_payload
+    EXPORTING
+      ec_templ_id    = 'WS_4'
+    IMPORTING
+      ec_payload_tab = lt_payload.
+
+  "——3.5—— Check for pensioner in lt_payload (endda = 99991231, employeeClass = 9)
+  LOOP AT lt_payload INTO wa_payload WHERE endda = '99991231'.
+    LOOP AT wa_payload-field_value_pair_tab INTO wa_field WHERE ec_fld_name = 'employeeClass'.
+      IF wa_field-ec_fld_value = '9'.
+        isPensioner = abap_true.
+        EXIT.
+      ENDIF.
+    ENDLOOP.
+    IF isPensioner = abap_true.
+      EXIT.
+    ENDIF.
+  ENDLOOP.
+
+  "——4—— loop original records
+  LOOP AT lt_in ASSIGNING <fs_in>.
+    CLEAR: wa_payload, lv_event.
+
+    " find the first payload slice that overlaps your record's dates
+    LOOP AT lt_payload INTO wa_payload
+          WHERE begda <= <fs_in>-endda
+            AND endda >= <fs_in>-begda.
+      EXIT.
+    ENDLOOP.
+    IF wa_payload IS INITIAL.
+      CONTINUE.
+    ENDIF.
+
+    " pull out the event field
+    LOOP AT wa_payload-field_value_pair_tab INTO wa_field.
+      IF  wa_field-ec_fld_name = 'event'.
+        lv_event = wa_field-ec_fld_value.
+      ENDIF.
+      IF wa_field-ec_fld_name = 'eventReason'.
+        lv_reason = wa_field-ec_fld_value.
+      ENDIF.
+    ENDLOOP.
+
+    " only H or R → build new record
+    IF ( lv_event = 'H' OR lv_event = 'R') AND lv_reason <> 'AD' AND  lv_reason <> 'RD'.
+      ls_record = <fs_in>.
+      ls_record-begda = wa_payload-begda.
+      ls_record-endda = wa_payload-endda.
+      ls_record-bengr = 'EMPL'.
+      ls_record-bstat = 'FULL'.
+      APPEND ls_record TO lt_out.
+    ELSEIF lv_reason = 'HA' OR lv_reason = 'HB'  OR lv_reason = 'HC' OR lv_reason = 'VT'.
+      ls_record = <fs_in>.
+      ls_record-begda = wa_payload-begda.
+      ls_record-endda = wa_payload-endda.
+      ls_record-bengr = 'RETI'.
+      ls_record-bstat = 'PENS'.
+      APPEND ls_record TO lt_out.
+    ELSEIF  <fs_in>-begda LE '20241228' AND isPensioner = abap_true.
+      ls_record = <fs_in>.
+      ls_record-begda = '20241229'.
+      ls_record-endda = wa_payload-endda.
+      ls_record-bengr = 'EMPL'.
+      ls_record-bstat = 'FULL'.
+      APPEND ls_record TO lt_out.
+    ENDIF.
+  ENDLOOP.
+
+  IF lt_out IS NOT INITIAL.
+    pnnnn_tab = lt_out.
+  ENDIF.
+
+ENDMETHOD.

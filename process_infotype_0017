@@ -1,0 +1,60 @@
+METHOD process_infotype_0017.
+  "——1—— work areas and tables
+  DATA: lt_in     TYPE TABLE OF p0017,      " original records
+        lt_out    TYPE TABLE OF p0017,      " only H/R → J/1 records
+        ls_record TYPE p0017.               " temp for loop
+
+  FIELD-SYMBOLS: <fs_in>  TYPE p0017.
+
+  " payload structures
+  DATA: lt_payload TYPE ecpao_t_ec_payload_badi,
+        wa_payload TYPE ecpao_s_ec_payload_badi,
+        lt_fields  TYPE TABLE OF ecpao_in_s_field_value_pair,
+        wa_field   TYPE ecpao_in_s_field_value_pair,
+        lv_event   TYPE string.
+
+  "——2—— copy incoming into lt_in
+  lt_in = pnnnn_tab.
+
+  "——3—— fetch your BAdI payload once
+  CALL METHOD ec_payload->get_ec_payload
+    EXPORTING
+      ec_templ_id    = 'WS_4'
+    IMPORTING
+      ec_payload_tab = lt_payload.
+
+  "——4—— loop original records
+  LOOP AT lt_in ASSIGNING <fs_in>.
+    CLEAR: wa_payload, lv_event.
+
+    " find the first payload slice that overlaps your record's dates
+    LOOP AT lt_payload INTO wa_payload
+          WHERE begda <= <fs_in>-endda
+            AND endda >= <fs_in>-begda.
+      EXIT.
+    ENDLOOP.
+    IF wa_payload IS INITIAL.
+      CONTINUE.
+    ENDIF.
+
+    " pull out the event field
+    LOOP AT wa_payload-field_value_pair_tab INTO wa_field
+          WHERE ec_fld_name = 'event'.
+      lv_event = wa_field-ec_fld_value.
+      EXIT.
+    ENDLOOP.
+
+    " only H or R → build new record
+    IF lv_event = 'H' OR lv_event = 'R'.
+      ls_record = <fs_in>.
+      ls_record-pekez = 'J'.
+      ls_record-spebe = '1'.
+      APPEND ls_record TO lt_out.
+    ENDIF.
+
+  ENDLOOP.
+
+
+  "——5—— return only the new lines (or empty)
+  pnnnn_tab = lt_out.
+ENDMETHOD.

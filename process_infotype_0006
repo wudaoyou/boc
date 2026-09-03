@@ -1,25 +1,100 @@
-  METHOD process_infotype_0002.
-    DATA: lt_p0002     TYPE TABLE OF p0002.
-    FIELD-SYMBOLS:  <fs_p0002> TYPE p0002.
+  METHOD process_infotype_0006.
+
+    DATA: lt_p0006     TYPE TABLE OF p0006.
+    FIELD-SYMBOLS:  <fs_p0006> TYPE p0006.
     DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
     DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
     DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
          wa_fields TYPE ecpao_in_s_field_value_pair.
-    DATA lv_PERID TYPE PRDNI.
-    lt_p0002 = pnnnn_tab.
+    DATA lv_areacode TYPE string.
+    DATA lv_telno TYPE string.
+    DATA lv_phone_type TYPE string.
+    DATA lv_phone_type_erp TYPE string.
+    DATA lv_primary TYPE string.
+    DATA lv_country TYPE string.
+
+    DATA lv_counter TYPE i VALUE 1.
+    DATA lv_idx_suffix TYPE char02.
+    DATA lv_fieldname TYPE string.
+
+    lt_p0006 = pnnnn_tab.
     CALL METHOD ec_payload->get_ec_payload
       EXPORTING
-        ec_templ_id    = 'WS_17'
+        ec_templ_id    = 'WS_8'
       IMPORTING
         ec_payload_tab = lt_payload.
 
-    LOOP AT lt_p0002 ASSIGNING <fs_p0002>.
-      CLEAR : lv_PERID.
-      lv_PERID = <fs_p0002>-PERID.
-      IF lv_PERID is INITIAL.
-         lv_perid = '999999998'.
-      ENDIF.
-      <fs_p0002>-PERID = lv_PERID.
+    IF lt_payload[] IS INITIAL.
+      pnnnn_tab = lt_p0006.
+      RETURN.
+    ENDIF.
+
+    LOOP AT lt_p0006 ASSIGNING <fs_p0006> WHERE endda = '99991231'.
+      CLEAR: <fs_p0006>-com01, <fs_p0006>-com02, <fs_p0006>-com03.
+      CLEAR: <fs_p0006>-num01, <fs_p0006>-num02, <fs_p0006>-num03.
+      lv_counter = 1.
+      LOOP AT lt_payload INTO  wa_payload.
+        IF lv_counter > 6.
+          EXIT.
+        ENDIF.
+
+        CLEAR: lv_areacode, lv_phone_type, lv_phone_type_erp, lv_telno, lv_primary.
+
+        lt_fields = wa_payload-field_value_pair_tab.
+        LOOP AT lt_fields INTO  wa_fields.
+          CASE wa_fields-ec_fld_name.
+            WHEN 'areaCode'. lv_areacode = wa_fields-ec_fld_value.
+            WHEN 'phoneNumber'. lv_telno = wa_fields-ec_fld_value.
+            WHEN 'phoneType'.  lv_phone_type = wa_fields-ec_fld_value.
+            WHEN 'isPrimary'.  lv_primary = wa_fields-ec_fld_value.
+            WHEN 'countryCode'. lv_country = wa_fields-ec_fld_value.
+          ENDCASE.
+        ENDLOOP.
+
+        IF lv_country IS INITIAL OR lv_country <> 'CAN'.
+          CONTINUE.
+        ENDIF.
+
+        IF lv_telno CP '*-*'.
+          REPLACE ALL OCCURRENCES OF '-' IN lv_telno WITH ''.
+        ENDIF.
+        CONCATENATE lv_areacode lv_telno INTO lv_telno.
+
+        IF lv_phone_type IS NOT INITIAL.
+          SELECT SINGLE erp_key
+            INTO lv_phone_type_erp
+            FROM ecpao_value_map
+            WHERE
+            company = 'BANK'
+            AND value_entyname = 'PHONE_TYPE'
+            AND ec_key = lv_phone_type.
+        ENDIF.
+
+        IF lv_phone_type_erp = 'TEL3'.
+          <fs_p0006>-telnr = lv_telno.
+          CONTINUE.
+        ENDIF.
+
+        lv_fieldname = |NUM0{ lv_counter }|.
+
+
+        FIELD-SYMBOLS <fs_num> TYPE any.
+        ASSIGN COMPONENT lv_fieldname OF STRUCTURE <fs_p0006> TO <fs_num>.
+        IF sy-subrc = 0.
+          <fs_num> = lv_telno.
+        ENDIF.
+
+        lv_fieldname = |COM0{ lv_counter }|.
+        FIELD-SYMBOLS <fs_com> TYPE any.
+        ASSIGN COMPONENT lv_fieldname OF STRUCTURE <fs_p0006> TO <fs_com>.
+        IF sy-subrc = 0.
+          <fs_com> = lv_phone_type_erp.
+        ENDIF.
+        ADD 1 TO lv_counter.
+      ENDLOOP.
     ENDLOOP.
-    pnnnn_tab = lt_p0002.
+
+    pnnnn_tab = lt_p0006.
+
+
   ENDMETHOD.

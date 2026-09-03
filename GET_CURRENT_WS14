@@ -1,0 +1,45 @@
+  METHOD get_current_ws14.
+    DATA:
+      lt_ws3          TYPE ecpao_t_ec_payload_badi,
+      wa_ws3          TYPE ecpao_s_ec_payload_badi,
+      lt_ws14         TYPE ecpao_t_ec_payload_badi,
+      lt_ws14_current TYPE ecpao_t_ec_payload_badi,
+      wa_ws14         TYPE ecpao_s_ec_payload_badi,
+      wa_field        TYPE ecpao_in_s_field_value_pair,
+      lv_node         TYPE i,
+      lv_payload_user TYPE pernr_d.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_3'
+      IMPORTING
+        ec_payload_tab = lt_ws3.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_14'
+      IMPORTING
+        ec_payload_tab = lt_ws14.
+
+    LOOP AT lt_ws3 INTO wa_ws3.
+      CLEAR lv_payload_user.
+
+      READ TABLE wa_ws3-field_value_pair_tab
+        INTO wa_field
+        WITH KEY ec_fld_name = 'userId'.
+
+      IF sy-subrc = 0.
+        lv_payload_user = wa_field-ec_fld_value.
+      ENDIF.
+
+      IF lv_payload_user IS NOT INITIAL AND lv_payload_user = pernr.
+        lv_node = wa_ws3-node_number.
+        LOOP AT lt_ws14 INTO wa_ws14
+          WHERE parent_node_number = lv_node.
+          APPEND wa_ws14 TO lt_ws14_current.
+        ENDLOOP.
+      ENDIF.
+    ENDLOOP.
+
+    ws14_tab = lt_ws14_current.
+  ENDMETHOD.

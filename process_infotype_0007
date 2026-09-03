@@ -7,11 +7,12 @@
          wa_fields TYPE ecpao_in_s_field_value_pair.
 
     lt_p0007 = pnnnn_tab.
-    CALL METHOD ec_payload->get_ec_payload
+    CALL METHOD get_current_ws4_ws3
       EXPORTING
-        ec_templ_id    = 'WS_4'
-      IMPORTING
-        ec_payload_tab = lt_payload.
+        pernr      = pernr
+        ec_payload = ec_payload
+      CHANGING
+        ws4_tab    = lt_payload.
 
     LOOP AT lt_p0007 ASSIGNING <fs_p0007>.
       LOOP AT lt_payload INTO wa_payload

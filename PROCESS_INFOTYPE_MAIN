@@ -14,6 +14,7 @@
       process_infotype_0001(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
 
@@ -23,6 +24,7 @@
       process_infotype_0002(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
 
@@ -42,6 +44,7 @@
       process_infotype_0006(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
 
@@ -51,6 +54,7 @@
       process_infotype_0007(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
 
@@ -61,6 +65,7 @@
       process_infotype_0009(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
 
@@ -70,6 +75,7 @@
       process_infotype_0017(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
 
@@ -79,6 +85,7 @@
       process_infotype_0019(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
 
@@ -88,6 +95,7 @@
       process_infotype_0033(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
     ENDIF.
@@ -96,6 +104,7 @@
       process_infotype_0105(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
     ENDIF.
@@ -105,6 +114,7 @@
       process_infotype_0171(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
     ENDIF.
@@ -113,6 +123,7 @@
       process_infotype_0041(
         EXPORTING
           ec_payload = ec_payload
+          pernr = pernr
         CHANGING
           pnnnn_tab  = pnnnn_primary_tab ).
     ENDIF.

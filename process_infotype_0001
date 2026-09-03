@@ -12,12 +12,13 @@ METHOD process_infotype_0001.
 
   lt_p0001 = pnnnn_tab.
 
-  " Retrieve EC payload for given template
-  CALL METHOD ec_payload->get_ec_payload
+  " Retrieve current WS4 payload for the employee
+  CALL METHOD get_current_ws4_ws3
     EXPORTING
-      ec_templ_id    = 'WS_4'
-    IMPORTING
-      ec_payload_tab = lt_payload.
+      pernr      = pernr
+      ec_payload = ec_payload
+    CHANGING
+      ws4_tab    = lt_payload.
 
   LOOP AT lt_p0001 ASSIGNING <fs_p0001>.
     CLEAR: massn, massg.

@@ -3,6 +3,7 @@ METHOD process_infotype_0105.
   FIELD-SYMBOLS: <fs_p0105> TYPE p0105.
   FIELD-SYMBOLS: <fs_result> type p0105.
   DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
+  DATA lt_ws4_unused TYPE ecpao_t_ec_payload_badi.
   DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
   DATA: lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
         wa_fields TYPE ecpao_in_s_field_value_pair.
@@ -35,6 +36,7 @@ METHOD process_infotype_0105.
           pernr      = pernr
           ec_payload = ec_payload
         CHANGING
+          ws4_tab    = lt_ws4_unused
           ws3_tab    = lt_payload.
     ELSE.
       CALL METHOD ec_payload->get_ec_payload

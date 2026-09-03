@@ -1,0 +1,34 @@
+  METHOD process_infotype_0000.
+    DATA: lt_p0000     TYPE TABLE OF p0000.
+    FIELD-SYMBOLS:  <fs_p0000> TYPE p0000.
+    DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
+    DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
+    DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
+         wa_fields TYPE ecpao_in_s_field_value_pair.
+    DATA lv_massn TYPE string.
+    DATA lv_massg TYPE string.
+    lt_p0000 = pnnnn_tab.
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_4'
+      IMPORTING
+        ec_payload_tab = lt_payload.
+
+    LOOP AT lt_p0000 ASSIGNING <fs_p0000>.
+      CLEAR : lv_MASSN, lv_MASSg.
+      lv_massn = <fs_p0000>-massn.
+      lv_massg = <fs_p0000>-massg.
+      CLEAR: <fs_p0000>-massn, <fs_p0000>-massg.
+      IF lv_massn = '10'.
+        CASE lv_massg(1).
+          WHEN 'I'.
+            CONCATENATE '9' lv_massg(1) INTO  lv_massn.
+          WHEN 'R'.
+            CONCATENATE '9' lv_massg(1) INTO  lv_massn.
+        ENDCASE.
+      ENDIF.
+      <fs_p0000>-massn = lv_massn.
+      <fs_p0000>-massg = lv_massg.
+    ENDLOOP.
+    pnnnn_tab = lt_p0000.
+  ENDMETHOD.

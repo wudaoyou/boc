@@ -8,11 +8,12 @@
     DATA lv_massn TYPE string.
     DATA lv_massg TYPE string.
     lt_p0000 = pnnnn_tab.
-    CALL METHOD ec_payload->get_ec_payload
+    CALL METHOD get_current_ws4_ws3
       EXPORTING
-        ec_templ_id    = 'WS_4'
-      IMPORTING
-        ec_payload_tab = lt_payload.
+        pernr      = pernr
+        ec_payload = ec_payload
+      CHANGING
+        ws4_tab    = lt_payload.
 
     LOOP AT lt_p0000 ASSIGNING <fs_p0000>.
       CLEAR : lv_MASSN, lv_MASSg.

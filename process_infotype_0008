@@ -8,10 +8,20 @@
     DATA wa_payload_4   TYPE ecpao_s_ec_payload_badi.
     DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
          wa_fields TYPE ecpao_in_s_field_value_pair.
+    DATA lt_required_lgart TYPE TABLE OF p0008-lga01.
+    DATA lv_required_lgart TYPE p0008-lga01.
+    DATA lv_lgart_field TYPE string.
+    DATA lv_betrg_field TYPE string.
+    DATA lv_slot TYPE n LENGTH 2.
+    DATA lv_lgart_exists TYPE abap_bool.
+    FIELD-SYMBOLS <fs_lgart> TYPE any.
+    FIELD-SYMBOLS <fs_betrg> TYPE any.
 
     DATA lv_ANSAL TYPE string.
     DATA lv_bsgrd TYPE string.
 
+    APPEND '1745' TO lt_required_lgart.
+    APPEND '1805' TO lt_required_lgart.
 
     lt_p0008 = pnnnn_tab.
 
@@ -85,6 +95,35 @@
       ELSEIF <fs_p0008>-trfar = '11'.
         CLEAR <fs_p0008>-trfst.
         <fs_p0008>-cpind = 'T'.
+
+        LOOP AT lt_required_lgart INTO lv_required_lgart.
+          lv_lgart_exists = abap_false.
+          DO 40 TIMES.
+            lv_slot = sy-index.
+            lv_lgart_field = |LGA{ lv_slot }|.
+            ASSIGN COMPONENT lv_lgart_field OF STRUCTURE <fs_p0008> TO <fs_lgart>.
+            IF sy-subrc = 0 AND <fs_lgart> = lv_required_lgart.
+              lv_lgart_exists = abap_true.
+              EXIT.
+            ENDIF.
+          ENDDO.
+
+          CHECK lv_lgart_exists = abap_false.
+          DO 40 TIMES.
+            lv_slot = sy-index.
+            lv_lgart_field = |LGA{ lv_slot }|.
+            ASSIGN COMPONENT lv_lgart_field OF STRUCTURE <fs_p0008> TO <fs_lgart>.
+            IF sy-subrc = 0 AND <fs_lgart> IS INITIAL.
+              <fs_lgart> = lv_required_lgart.
+              lv_betrg_field = |BET{ lv_slot }|.
+              ASSIGN COMPONENT lv_betrg_field OF STRUCTURE <fs_p0008> TO <fs_betrg>.
+              IF sy-subrc = 0.
+                CLEAR <fs_betrg>.
+              ENDIF.
+              EXIT.
+            ENDIF.
+          ENDDO.
+        ENDLOOP.
       ENDIF.
 
       IF <fs_p0008>-waers = 'CADHR'.

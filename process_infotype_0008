@@ -15,10 +15,11 @@
 
     lt_p0008 = pnnnn_tab.
 
-    " IT0008 / IT0014 pay component filter placeholder:
-    " Keep only Basic Pay wage type slots in lt_p0008.
-    " Exclude non-Basic recurring pay components here; IT0014 handles them.
-    " TODO: Implement after the Basic Pay wage type rule is confirmed.
+    " For pay scale area 11, keep only 17xx, 18xx, and 1004 in IT0008.
+    DELETE lt_p0008 WHERE trfar = '11'
+                      AND lga01 NP '17++'
+                      AND lga01 NP '18++'
+                      AND lga01 <> '1004'.
 
     CALL METHOD get_current_ws11
       EXPORTING
@@ -77,18 +78,16 @@
         <fs_p0008>-ansal = <fs_p0008>-bet01.
         <fs_p0008>-cpind = 'S'.
         <fs_p0008>-waers = 'CADHR'.
-        <fs_p0008>-bet01 = <fs_p0008>-bet01 / c_annualizationpayfreq * 100.
+        <fs_p0008>-bet01 = <fs_p0008>-bet01 / c_annualizationpayfreq.
 
         "clear <fs_p0008>-bet01.
 
       ELSEIF <fs_p0008>-trfar = '11'.
         CLEAR <fs_p0008>-trfst.
-        <fs_p0008>-lga01 = '1745'.
-        <fs_p0008>-lga02 = '1805'.
-        <fs_p0008>-bet01 = 0.
         <fs_p0008>-cpind = 'T'.
-        <fs_p0008>-bet01 = <fs_p0008>-bet01 * 100.
-      ELSE.
+      ENDIF.
+
+      IF <fs_p0008>-waers = 'CADHR'.
         <fs_p0008>-bet01 = <fs_p0008>-bet01 * 100.
       ENDIF.
     ENDLOOP.

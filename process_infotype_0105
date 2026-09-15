@@ -9,7 +9,12 @@ METHOD process_infotype_0105.
         wa_fields TYPE ecpao_in_s_field_value_pair.
   DATA lv_ec_templ_id TYPE ecpao_ectempl_id.
   DATA lv_email_addr TYPE comm_id_long.
+  DATA lv_business_email TYPE comm_id_long.
+  DATA lv_personal_email TYPE comm_id_long.
+  DATA lv_email_type TYPE string.
   DATA lv_found TYPE abap_bool.
+  DATA ls_email TYPE p0105.
+  DATA lt_email_records TYPE TABLE OF p0105.
 
   DATA lt_result TYPE TABLE OF p0105. " Table to collect records to keep
 
@@ -46,6 +51,64 @@ METHOD process_infotype_0105.
           ec_payload_tab = lt_payload.
     ENDIF.
 
+    IF <fs_p0105>-usrty = '0010'.
+      CLEAR: lv_business_email, lv_personal_email.
+
+      LOOP AT lt_payload INTO wa_payload.
+        lt_fields = wa_payload-field_value_pair_tab.
+        CLEAR: lv_email_addr, lv_email_type.
+
+        LOOP AT lt_fields INTO wa_fields.
+          CASE wa_fields-ec_fld_name.
+            WHEN 'emailType'.
+              lv_email_type = wa_fields-ec_fld_value.
+            WHEN 'emailAddress'.
+              lv_email_addr = wa_fields-ec_fld_value.
+          ENDCASE.
+        ENDLOOP.
+
+        CASE lv_email_type.
+          WHEN 'B'.
+            lv_business_email = lv_email_addr.
+          WHEN 'P'.
+            lv_personal_email = lv_email_addr.
+        ENDCASE.
+      ENDLOOP.
+
+      CLEAR lt_email_records.
+      IF lv_business_email IS NOT INITIAL.
+        ls_email = <fs_p0105>.
+        ls_email-subty = '0010'.
+        ls_email-usrty = '0010'.
+        ls_email-usrid_long = lv_business_email.
+        APPEND ls_email TO lt_email_records.
+      ENDIF.
+
+      IF lv_personal_email IS NOT INITIAL.
+        ls_email = <fs_p0105>.
+        ls_email-subty = '0030'.
+        ls_email-usrty = '0030'.
+        ls_email-usrid_long = lv_personal_email.
+        APPEND ls_email TO lt_email_records.
+      ENDIF.
+
+      LOOP AT lt_email_records INTO ls_email.
+        CLEAR lv_found.
+        LOOP AT lt_result ASSIGNING <fs_result>
+          WHERE subty = ls_email-subty
+            AND begda = ls_email-begda
+            AND endda = ls_email-endda.
+          lv_found = abap_true.
+          EXIT.
+        ENDLOOP.
+        IF lv_found IS INITIAL.
+          APPEND ls_email TO lt_result.
+        ENDIF.
+      ENDLOOP.
+
+      CONTINUE.
+    ENDIF.
+
     LOOP AT lt_payload INTO wa_payload.
       lt_fields = wa_payload-field_value_pair_tab.
 
@@ -71,44 +134,6 @@ METHOD process_infotype_0105.
         ENDLOOP.
         IF lv_found IS INITIAL.
           APPEND <fs_p0105> TO lt_result.
-        ENDIF.
-
-      ELSEIF <fs_p0105>-usrty = '0010'.
-        DATA(lv_found_b) = abap_false.
-
-        LOOP AT lt_fields INTO wa_fields.
-          IF wa_fields-ec_fld_name = 'emailType' AND wa_fields-ec_fld_value = 'B'.
-            lv_found_b = abap_true.
-            EXIT.
-          ENDIF.
-        ENDLOOP.
-
-        IF lv_found_b = abap_true.
-          " Find emailAddress after emailType = B
-          CLEAR lv_email_addr.
-          LOOP AT lt_fields INTO wa_fields.
-            IF wa_fields-ec_fld_name = 'emailAddress'.
-              lv_email_addr = wa_fields-ec_fld_value.
-              EXIT.
-            ENDIF.
-          ENDLOOP.
-          <fs_p0105>-usrid_long = lv_email_addr.
-        ELSE.
-          CLEAR <fs_p0105>-usrid_long.
-        ENDIF.
-
-        IF <fs_p0105>-usrid_long IS NOT INITIAL.
-          CLEAR lv_found.
-          LOOP AT lt_result ASSIGNING <fs_result>
-            WHERE subty = <fs_p0105>-subty
-              AND begda = <fs_p0105>-begda
-              AND endda = <fs_p0105>-endda.
-            lv_found = abap_true.
-            EXIT.
-          ENDLOOP.
-          IF lv_found IS INITIAL.
-            APPEND <fs_p0105> TO lt_result.
-          ENDIF.
         ENDIF.
 
       ENDIF.

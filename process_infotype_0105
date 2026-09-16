@@ -9,6 +9,7 @@ METHOD process_infotype_0105.
   DATA lv_email_addr TYPE comm_id_long.
   DATA lv_email_type TYPE string.
   DATA lv_email_subty TYPE p0105-subty.
+  DATA lv_email_base_found TYPE abap_bool.
   DATA ls_email TYPE p0105.
   DATA ls_email_base TYPE p0105.
 
@@ -21,12 +22,12 @@ METHOD process_infotype_0105.
   IF sy-subrc <> 0.
     READ TABLE lt_p0105 INTO ls_email_base WITH KEY usrty = '0001'.
   ENDIF.
-  IF sy-subrc <> 0.
-    READ TABLE lt_p0105 INTO ls_email_base INDEX 1.
+  IF sy-subrc = 0.
+    lv_email_base_found = abap_true.
   ENDIF.
 
   LOOP AT lt_p0105 ASSIGNING <fs_p0105>.
-    IF <fs_p0105>-usrty = '0010'.
+    IF <fs_p0105>-usrty = '0010' OR <fs_p0105>-usrty = '0030'.
       " Replaced below by the independently generated email record.
       CONTINUE.
     ELSEIF <fs_p0105>-usrty <> '0001'.
@@ -92,7 +93,7 @@ METHOD process_infotype_0105.
 
     CHECK lv_email_addr IS NOT INITIAL.
     ls_email = ls_email_base.
-    IF lt_p0105 IS INITIAL.
+    IF lv_email_base_found IS INITIAL.
       ls_email-infty = '0105'.
       ls_email-pernr = pernr.
       ls_email-begda = wa_payload-begda.

@@ -25,13 +25,6 @@
 
     lt_p0008 = pnnnn_tab.
 
-    " For pay scale area 11, keep 17xx, 18xx, 1004, and 9993 in IT0008.
-    DELETE lt_p0008 WHERE trfar = '11'
-                      AND lga01 NP '17++'
-                      AND lga01 NP '18++'
-                      AND lga01 <> '1004'
-                      AND lga01 <> '9993'.
-
     CALL METHOD get_current_ws11
       EXPORTING
         pernr      = pernr

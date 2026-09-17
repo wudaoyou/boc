@@ -6,27 +6,14 @@ METHOD process_infotype_0105.
   DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
   DATA: lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
         wa_fields TYPE ecpao_in_s_field_value_pair.
-  DATA lv_email_addr TYPE comm_id_long.
-  DATA lv_email_type TYPE string.
-  DATA lv_business_email TYPE comm_id_long.
-  DATA lv_personal_email TYPE comm_id_long.
-  DATA lv_email_base_found TYPE abap_bool.
-  DATA ls_email TYPE p0105.
-  DATA ls_email_base TYPE p0105.
-
   DATA lt_result TYPE TABLE OF p0105. " Table to collect records to keep
 
   lt_p0105 = pnnnn_tab.
 
-  " BIB calls this method separately for subtype 0001 and email subtype 0010.
-  READ TABLE lt_p0105 INTO ls_email_base WITH KEY subty = '0010'.
-  IF sy-subrc = 0.
-    lv_email_base_found = abap_true.
-  ENDIF.
-
   LOOP AT lt_p0105 ASSIGNING <fs_p0105>.
-    IF <fs_p0105>-subty = '0010'.
-      " Keep the BIB record only after checking WS_7 below.
+    IF <fs_p0105>-subty = '0010' OR <fs_p0105>-subty = '0030'.
+      " Let BIB handle email records without BAdI changes.
+      APPEND <fs_p0105> TO lt_result.
       CONTINUE.
     ELSEIF <fs_p0105>-usrty <> '0001'.
       " For other types, just add the record and continue
@@ -60,60 +47,6 @@ METHOD process_infotype_0105.
       ENDIF.
     ENDLOOP.
   ENDLOOP.
-
-  IF lv_email_base_found = abap_true.
-    CALL METHOD ec_payload->get_ec_payload
-      EXPORTING
-        ec_templ_id    = 'WS_7'
-      IMPORTING
-        ec_payload_tab = lt_payload.
-
-    LOOP AT lt_payload INTO wa_payload.
-      lt_fields = wa_payload-field_value_pair_tab.
-      CLEAR: lv_email_addr, lv_email_type.
-
-      LOOP AT lt_fields INTO wa_fields.
-        CASE wa_fields-ec_fld_name.
-          WHEN 'emailType'.
-            lv_email_type = wa_fields-ec_fld_value.
-          WHEN 'emailAddress'.
-            lv_email_addr = wa_fields-ec_fld_value.
-        ENDCASE.
-      ENDLOOP.
-
-      CHECK lv_email_addr IS NOT INITIAL.
-      CASE lv_email_type.
-        WHEN 'B'.
-          lv_business_email = lv_email_addr.
-        WHEN 'P'.
-          lv_personal_email = lv_email_addr.
-      ENDCASE.
-    ENDLOOP.
-
-    IF lv_business_email IS NOT INITIAL.
-      ls_email = ls_email_base.
-      IF lv_personal_email IS NOT INITIAL.
-        " With both types, use the B address for subtype 0010.
-        ls_email-usrty = '0010'.
-        CLEAR ls_email-usrid.
-        ls_email-usrid_long = lv_business_email.
-      ENDIF.
-      APPEND ls_email TO lt_result.
-    ENDIF.
-
-    IF lv_personal_email IS NOT INITIAL.
-      ls_email = ls_email_base.
-      ls_email-subty = '0030'.
-      ls_email-usrty = '0030'.
-      CLEAR ls_email-usrid.
-      ls_email-usrid_long = lv_personal_email.
-
-      DELETE lt_result WHERE subty = '0030'
-                         AND begda = ls_email-begda
-                         AND endda = ls_email-endda.
-      APPEND ls_email TO lt_result.
-    ENDIF.
-  ENDIF.
 
   pnnnn_tab = lt_result.
 ENDMETHOD.

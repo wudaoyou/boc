@@ -1,2 +1,4 @@
 .DS_Store
 ~$*.xlsx
+~$*.docx
+outputs/2026-09-21-state-chn-t005s/STATE_CHN_to_T005S.xlsx.inspect.ndjson

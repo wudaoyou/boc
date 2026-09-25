@@ -41,9 +41,10 @@
                 <custom_date4>9999-12-31</custom_date4>
                 <end_date>9999-12-31</end_date>
                 <is_global_model_address>false</is_global_model_address>
-                <last_modified_by>IBMadminXUIR</last_modified_by>
-                <last_modified_on>2026-09-23T18:30:55.000Z</last_modified_on>
+                <last_modified_by>IBMadminJG</last_modified_by>
+                <last_modified_on>2026-09-25T21:44:25.000Z</last_modified_on>
                 <start_date>2011-08-28</start_date>
+                <state>BE</state>
                 <zip_code>10435</zip_code>
             </address_information>
             <employment_information>
@@ -273,20 +274,7 @@
                 </DRTMPurgeStatus>
             </DRTMPurgeStatusOverview>
         </person>
-        <log>
-            <log_item>
-                <per_person_uuid>95408163EAC4417F84D9536219F7F8A6</per_person_uuid>
-                <person_id>6092</person_id>
-                <person_id_external>00101556</person_id_external>
-                <node_name>address_information</node_name>
-                <field_name>state</field_name>
-                <xpath>//sfobject[1]/person/address_information[1]</xpath>
-                <code>COMPOUND_EMPLOYEE/PICKLIST_INVALID</code>
-                <severity>WARNING</severity>
-                <message_text>Field "state" can't be returned: Please make sure that the external code for picklist "STATE_DEU" with option ID "Berlin" is valid. If this is a migrated picklist, please maintain missing non-unique external codes for this picklist.</message_text>
-            </log_item>
-        </log>
-        <execution_timestamp>2026-09-24T22:40:33.000Z</execution_timestamp>
+        <execution_timestamp>2026-09-25T21:45:14.000Z</execution_timestamp>
         <version_id>2605P0</version_id>
     </CompoundEmployee>
 </queryCompoundEmployeeResponse>

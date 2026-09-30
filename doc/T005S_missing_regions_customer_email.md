@@ -4,22 +4,25 @@
 
 Dear [Customer Name],
 
-We compared the Employee Central state/province values with the SAP S/4HANA region extracts provided for France, the United Kingdom, and Spain. The following areas do not yet have a confirmed SAP region code in our mapping:
+As part of the Business Integration Builder (BIB) configuration, we are mapping Employee Central state/province values to SAP S/4HANA regions for France, the United Kingdom, and Spain. Please confirm the SAP region codes for the following areas so we can complete the mapping:
 
-| Country (SAP key) | EC code | Area |
-| --- | --- | --- |
-| France (FR) | BL | Saint Barthélemy |
-| France (FR) | CP | Clipperton Island |
-| France (FR) | MF | Saint Martin |
-| France (FR) | NC | New Caledonia |
-| France (FR) | PF | French Polynesia |
-| France (FR) | TF | French Southern Territories |
-| France (FR) | YT | Mayotte |
-| United Kingdom (GB) | MDW | Medway |
-| United Kingdom (GB) | CAY | Caerphilly |
-| United Kingdom (GB) | CWY | Conwy |
-| Spain (ES) | CE | Ceuta |
-| Spain (ES) | ML | Melilla |
+France (FR):
+- EC code BL: Saint Barthélemy
+- EC code CP: Clipperton Island
+- EC code MF: Saint Martin
+- EC code NC: New Caledonia
+- EC code PF: French Polynesia
+- EC code TF: French Southern Territories
+- EC code YT: Mayotte
+
+United Kingdom (GB):
+- EC code MDW: Medway
+- EC code CAY: Caerphilly
+- EC code CWY: Conwy
+
+Spain (ES):
+- EC code CE: Ceuta
+- EC code ML: Melilla
 
 Please review these values in the target S/4HANA system. For any region that is required for employee address replication and does not already exist, please maintain the appropriate country/region entry in **V_T005S** and its description where applicable. If a region already exists under a different SAP code, or an EC value should be excluded or treated as a separate country, please confirm the intended handling.
 

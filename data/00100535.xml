@@ -1,70 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <queryCompoundEmployeeResponse>
     <CompoundEmployee>
-        <id>6092</id>
+        <id>5571</id>
         <person>
             <created_by>JOBADMIN</created_by>
-            <created_on_timestamp>2017-10-05T20:23:27.000Z</created_on_timestamp>
-            <date_of_birth>1970-11-03</date_of_birth>
+            <created_on_timestamp>2017-10-05T20:22:57.000Z</created_on_timestamp>
+            <date_of_birth>1975-07-27</date_of_birth>
             <last_modified_by>IBMadminXUIR</last_modified_by>
             <last_modified_on>2026-09-01T17:41:21.000Z</last_modified_on>
-            <logon_user_id>00101556</logon_user_id>
+            <logon_user_id>00100535</logon_user_id>
             <logon_user_is_active>false</logon_user_is_active>
-            <logon_user_name>ESCM</logon_user_name>
-            <per_person_uuid>95408163EAC4417F84D9536219F7F8A6</per_person_uuid>
-            <person_id>6092</person_id>
-            <person_id_external>00101556</person_id_external>
+            <logon_user_name>TOMU</logon_user_name>
+            <per_person_uuid>3FCAA89C631E4CE3810114A6EE1E6F4B</per_person_uuid>
+            <person_id>5571</person_id>
+            <person_id_external>00100535</person_id_external>
             <personal_information>
                 <created_by>IBMadminXUIR</created_by>
-                <created_on_timestamp>2026-09-10T21:29:22.000Z</created_on_timestamp>
+                <created_on_timestamp>2026-09-10T21:29:23.000Z</created_on_timestamp>
                 <custom_string1>EN</custom_string1>
                 <end_date>9999-12-31</end_date>
-                <first_name>Magali</first_name>
-                <formal_name>Magali Escudero</formal_name>
-                <gender>F</gender>
+                <first_name>Hajime</first_name>
+                <formal_name>Hajime Tomura</formal_name>
+                <gender>M</gender>
                 <is_overridden>false</is_overridden>
                 <last_modified_by>IBMadminXUIR</last_modified_by>
-                <last_modified_on>2026-09-10T21:29:22.000Z</last_modified_on>
-                <last_name>Escudero</last_name>
+                <last_modified_on>2026-09-10T21:29:23.000Z</last_modified_on>
+                <last_name>Tomura</last_name>
                 <native_preferred_lang>EN</native_preferred_lang>
-                <start_date>2010-07-12</start_date>
+                <start_date>2008-11-06</start_date>
             </personal_information>
             <address_information>
-                <address1>Danziger Str. 12</address1>
+                <address1>3-24-21-303 Nishiochiai, Shinjuku</address1>
+                <address4>3-24-21-303 Nishiochiai, Shinjuku</address4>
                 <address_type>home</address_type>
-                <city>Berlin</city>
-                <country>DEU</country>
-                <created_by>IBMadminXUIR</created_by>
-                <created_on_timestamp>2026-09-23T18:30:55.000Z</created_on_timestamp>
-                <custom_date3>2011-08-28</custom_date3>
+                <city>Tokyo</city>
+                <country>JPN</country>
+                <created_by>IBMadminJG</created_by>
+                <created_on_timestamp>2026-09-29T20:14:38.000Z</created_on_timestamp>
+                <custom_date3>2015-05-15</custom_date3>
                 <custom_date4>9999-12-31</custom_date4>
                 <end_date>9999-12-31</end_date>
                 <is_global_model_address>false</is_global_model_address>
-                <last_modified_by>IBMadminXUIR</last_modified_by>
-                <last_modified_on>2026-09-30T18:32:21.000Z</last_modified_on>
-                <start_date>2011-08-28</start_date>
-                <state>BE</state>
-                <zip_code>10435</zip_code>
+                <last_modified_by>IBMadminJG</last_modified_by>
+                <last_modified_on>2026-09-29T20:14:38.000Z</last_modified_on>
+                <start_date>2015-05-15</start_date>
+                <state>13</state>
+                <zip_code>1610031</zip_code>
             </address_information>
             <employment_information>
                 <assignment_class>ST</assignment_class>
-                <assignment_uuid>8258F73BD5A84BE5AC507E379F2447C0</assignment_uuid>
-                <assignmentIdExternal>00101556</assignmentIdExternal>
+                <assignment_uuid>8F900A9628DD43059D4024DE20377768</assignment_uuid>
+                <assignmentIdExternal>00100535</assignmentIdExternal>
                 <created_by>JOBADMIN</created_by>
-                <created_on_timestamp>2017-10-05T20:23:27.000Z</created_on_timestamp>
-                <custom_string1>00101556</custom_string1>
-                <custom_string2>ESCM</custom_string2>
+                <created_on_timestamp>2017-10-05T20:22:57.000Z</created_on_timestamp>
+                <custom_string1>00100535</custom_string1>
+                <custom_string2>TOMU</custom_string2>
                 <direct_reports>0</direct_reports>
-                <employment_id>4823</employment_id>
-                <end_date>2013-05-30</end_date>
+                <employment_id>4302</employment_id>
+                <end_date>2012-03-30</end_date>
                 <hiringNotCompleted>false</hiringNotCompleted>
                 <isContingentWorker>false</isContingentWorker>
                 <jobNumber>1</jobNumber>
                 <last_modified_by>IBMadminXUIR</last_modified_by>
-                <last_modified_on>2026-09-10T17:25:43.000Z</last_modified_on>
-                <originalStartDate>2010-07-12</originalStartDate>
-                <start_date>2010-07-12</start_date>
-                <user_id>00101556</user_id>
+                <last_modified_on>2026-09-10T17:25:36.000Z</last_modified_on>
+                <originalStartDate>2006-07-10</originalStartDate>
+                <start_date>2006-07-10</start_date>
+                <user_id>00100535</user_id>
                 <job_information>
                     <business_unit>NA</business_unit>
                     <calc_method_indicator>false</calc_method_indicator>
@@ -72,7 +73,7 @@
                     <company_territory_code>CAN</company_territory_code>
                     <created_by>IBMadminXUIR</created_by>
                     <created_on>2026-09-10</created_on>
-                    <created_on_timestamp>2026-09-10T17:25:43.000Z</created_on_timestamp>
+                    <created_on_timestamp>2026-09-10T17:25:36.000Z</created_on_timestamp>
                     <custom_double4>100.0</custom_double4>
                     <custom_string17>07</custom_string17>
                     <custom_string18>0</custom_string18>
@@ -103,11 +104,11 @@
                     <is_shift_employee>false</is_shift_employee>
                     <is_side_line_job_allowed>false</is_side_line_job_allowed>
                     <job_code>301052</job_code>
-                    <job_info_id>109315</job_info_id>
+                    <job_info_id>108992</job_info_id>
                     <labor_Protection>false</labor_Protection>
                     <last_modified_by>IBMadminXUIR</last_modified_by>
-                    <last_modified_on>2026-09-10T17:25:43.000Z</last_modified_on>
-                    <location>0730-0001</location>
+                    <last_modified_on>2026-09-10T17:25:36.000Z</last_modified_on>
+                    <location>0730-0003</location>
                     <manager_id>NO_MANAGER</manager_id>
                     <new_calc_avg_dnp>false</new_calc_avg_dnp>
                     <new_calc_avg_ppu>false</new_calc_avg_ppu>
@@ -121,7 +122,7 @@
                     <pension_protection>false</pension_protection>
                     <permit_indicator>false</permit_indicator>
                     <position>999997</position>
-                    <positionEntryDate>2010-07-12</positionEntryDate>
+                    <positionEntryDate>2006-07-10</positionEntryDate>
                     <resident_vote>false</resident_vote>
                     <retired>false</retired>
                     <seq_number>1</seq_number>
@@ -132,31 +133,73 @@
                     <working_time_directive>false</working_time_directive>
                     <workingDaysPerWeek>5.0</workingDaysPerWeek>
                 </job_information>
-                <PaymentInformationV3>
-                    <createdBy>IBMadminXUIR</createdBy>
-                    <createdDate>2026-09-23T18:31:32.000Z</createdDate>
-                    <effectiveEndDate>9999-12-31</effectiveEndDate>
-                    <effectiveStartDate>2026-08-01</effectiveStartDate>
-                    <lastModifiedBy>IBMadminXUIR</lastModifiedBy>
-                    <lastModifiedDate>2026-09-23T19:21:05.000Z</lastModifiedDate>
-                    <PaymentInformationDetailV3>
-                        <accountNumber>6278312</accountNumber>
-                        <bank>30300032</bank>
-                        <bankCountry>CAN</bankCountry>
-                        <createdBy>IBMadminXUIR</createdBy>
-                        <createdDate>2026-09-23T18:31:32.000Z</createdDate>
-                        <currency>CAD</currency>
-                        <cust_acknowledgement>Y</cust_acknowledgement>
-                        <cust_BankCity>MARKHAM</cust_BankCity>
-                        <externalCode>952376</externalCode>
-                        <lastModifiedBy>IBMadminXUIR</lastModifiedBy>
-                        <lastModifiedDate>2026-09-23T18:31:32.000Z</lastModifiedDate>
-                        <paymentMethod>05</paymentMethod>
-                        <paySequence>0</paySequence>
-                        <payType>MAIN</payType>
-                        <routingNumber>30300032</routingNumber>
-                    </PaymentInformationDetailV3>
-                </PaymentInformationV3>
+                <job_information>
+                    <business_unit>NA</business_unit>
+                    <calc_method_indicator>false</calc_method_indicator>
+                    <company>BANK</company>
+                    <company_territory_code>CAN</company_territory_code>
+                    <created_by>IBMadminXUIR</created_by>
+                    <created_on>2026-09-10</created_on>
+                    <created_on_timestamp>2026-09-10T17:25:36.000Z</created_on_timestamp>
+                    <custom_double4>100.0</custom_double4>
+                    <custom_string17>07</custom_string17>
+                    <custom_string18>0</custom_string18>
+                    <custom_string2>K5</custom_string2>
+                    <custom_string21>RM_hybridmodel_1</custom_string21>
+                    <custom_string5>PENSIONR</custom_string5>
+                    <custom_string8>NA</custom_string8>
+                    <department>2001825</department>
+                    <division>MIS</division>
+                    <employee_class>9</employee_class>
+                    <employment_type>79</employment_type>
+                    <emplStatus>R</emplStatus>
+                    <end_date>2026-07-31</end_date>
+                    <event>5</event>
+                    <event_reason>TA</event_reason>
+                    <excl_executive_sector>false</excl_executive_sector>
+                    <fgts_optant>false</fgts_optant>
+                    <fte>1.0</fte>
+                    <hazard>false</hazard>
+                    <health_risk>false</health_risk>
+                    <ineligible_statutory_min_wage>false</ineligible_statutory_min_wage>
+                    <is_competition_clause_active>false</is_competition_clause_active>
+                    <is_cross_border_worker>false</is_cross_border_worker>
+                    <is_eligible_for_benefit>false</is_eligible_for_benefit>
+                    <is_eligible_for_car>false</is_eligible_for_car>
+                    <is_fulltime_employee>true</is_fulltime_employee>
+                    <is_primary>false</is_primary>
+                    <is_shift_employee>false</is_shift_employee>
+                    <is_side_line_job_allowed>false</is_side_line_job_allowed>
+                    <job_code>301052</job_code>
+                    <job_info_id>108989</job_info_id>
+                    <labor_Protection>false</labor_Protection>
+                    <last_modified_by>IBMadminXUIR</last_modified_by>
+                    <last_modified_on>2026-09-10T17:25:36.000Z</last_modified_on>
+                    <location>0730-0003</location>
+                    <manager_id>NO_MANAGER</manager_id>
+                    <new_calc_avg_dnp>false</new_calc_avg_dnp>
+                    <new_calc_avg_ppu>false</new_calc_avg_ppu>
+                    <pay_grade>CAN/05/11/NPS/00</pay_grade>
+                    <payment_in_lieu_of_notice>false</payment_in_lieu_of_notice>
+                    <payScaleArea>CAN/05</payScaleArea>
+                    <payScaleGroup>CAN/05/11/NPS</payScaleGroup>
+                    <payScaleLevel>CAN/05/11/NPS/00</payScaleLevel>
+                    <payScaleType>CAN/11</payScaleType>
+                    <pcfm>false</pcfm>
+                    <pension_protection>false</pension_protection>
+                    <permit_indicator>false</permit_indicator>
+                    <position>999997</position>
+                    <positionEntryDate>2006-07-10</positionEntryDate>
+                    <resident_vote>false</resident_vote>
+                    <retired>false</retired>
+                    <seq_number>1</seq_number>
+                    <spcl_rule_non_manual_worker>false</spcl_rule_non_manual_worker>
+                    <start_date>2013-09-04</start_date>
+                    <teachers_pension>false</teachers_pension>
+                    <time_type_profile_code>LEAVE_OF_ABSENCE_PROFILE</time_type_profile_code>
+                    <working_time_directive>false</working_time_directive>
+                    <workingDaysPerWeek>5.0</workingDaysPerWeek>
+                </job_information>
             </employment_information>
             <national_id_card>
                 <card_type>sin</card_type>
@@ -166,47 +209,47 @@
                 <isPrimary>true</isPrimary>
                 <last_modified_by>IBMadminXUIR</last_modified_by>
                 <last_modified_on>2026-09-11T13:39:33.000Z</last_modified_on>
-                <national_id>555-374-370</national_id>
+                <national_id>559-465-059</national_id>
             </national_id_card>
             <DRTMPurgeStatusOverview>
                 <DRTMPurgeStatus>
                     <node_name>address_information</node_name>
-                    <person_id>6092</person_id>
+                    <person_id>5571</person_id>
                     <highestAuditPurgeDateTime>2024-09-26T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>compensation_information</node_name>
-                    <user_id>00101556</user_id>
+                    <user_id>00100535</user_id>
                     <highestAuditPurgeDateTime>2024-09-26T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>email_information</node_name>
-                    <person_id>6092</person_id>
+                    <person_id>5571</person_id>
                     <highestAuditPurgeDateTime>2024-09-26T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>job_relation</node_name>
-                    <user_id>00101556</user_id>
+                    <user_id>00100535</user_id>
                     <highestAuditPurgeDateTime>2024-09-26T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>national_id_card</node_name>
-                    <person_id>6092</person_id>
+                    <person_id>5571</person_id>
                     <highestAuditPurgeDateTime>2024-09-26T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>personal_information</node_name>
-                    <person_id>6092</person_id>
+                    <person_id>5571</person_id>
                     <highestAuditPurgeDateTime>2024-09-26T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
                 <DRTMPurgeStatus>
                     <node_name>phone_information</node_name>
-                    <person_id>6092</person_id>
+                    <person_id>5571</person_id>
                     <highestAuditPurgeDateTime>2024-09-26T00:00:00.000Z</highestAuditPurgeDateTime>
                 </DRTMPurgeStatus>
             </DRTMPurgeStatusOverview>
         </person>
-        <execution_timestamp>2026-09-30T18:33:26.000Z</execution_timestamp>
+        <execution_timestamp>2026-09-29T20:14:53.000Z</execution_timestamp>
         <version_id>2605P0</version_id>
     </CompoundEmployee>
 </queryCompoundEmployeeResponse>

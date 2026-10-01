@@ -31,7 +31,7 @@
       TRANSLATE lv_card_type TO UPPER CASE.
       TRANSLATE lv_primary TO UPPER CASE.
       CHECK ( lv_card_type = 'SIN' OR lv_card_type = 'SIN2' )
-        AND lv_primary = 'TRUE' AND lv_national_id IS NOT INITIAL.
+        AND lv_primary = abap_true AND lv_national_id IS NOT INITIAL.
       lv_primary_perid = lv_national_id.
       EXIT.
     ENDLOOP.

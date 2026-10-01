@@ -6,6 +6,10 @@
     DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
          wa_fields TYPE ecpao_in_s_field_value_pair.
     DATA lv_PERID TYPE PRDNI.
+    DATA lv_card_type TYPE string.
+    DATA lv_primary TYPE string.
+    DATA lv_national_id TYPE string.
+    DATA lv_primary_perid TYPE PRDNI.
     lt_p0002 = pnnnn_tab.
     CALL METHOD ec_payload->get_ec_payload
       EXPORTING
@@ -13,9 +17,31 @@
       IMPORTING
         ec_payload_tab = lt_payload.
 
+    LOOP AT lt_payload INTO wa_payload.
+      CLEAR: lv_card_type, lv_primary, lv_national_id.
+      lt_fields = wa_payload-field_value_pair_tab.
+      LOOP AT lt_fields INTO wa_fields.
+        CASE wa_fields-ec_fld_name.
+          WHEN 'cardType'. lv_card_type = wa_fields-ec_fld_value.
+          WHEN 'isPrimary'. lv_primary = wa_fields-ec_fld_value.
+          WHEN 'nationalId'. lv_national_id = wa_fields-ec_fld_value.
+        ENDCASE.
+      ENDLOOP.
+
+      TRANSLATE lv_card_type TO UPPER CASE.
+      TRANSLATE lv_primary TO UPPER CASE.
+      CHECK ( lv_card_type = 'SIN' OR lv_card_type = 'SIN2' )
+        AND lv_primary = 'TRUE' AND lv_national_id IS NOT INITIAL.
+      lv_primary_perid = lv_national_id.
+      EXIT.
+    ENDLOOP.
+
     LOOP AT lt_p0002 ASSIGNING <fs_p0002>.
       CLEAR : lv_PERID.
       lv_PERID = <fs_p0002>-PERID.
+      IF lv_primary_perid IS NOT INITIAL.
+        lv_PERID = lv_primary_perid.
+      ENDIF.
       IF lv_PERID is INITIAL.
          lv_perid = '999999998'.
       ENDIF.

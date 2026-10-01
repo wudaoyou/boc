@@ -5,7 +5,9 @@ METHOD process_infotype_0001.
         wa_payload   TYPE ecpao_s_ec_payload_badi,
         lt_fields    TYPE TABLE OF ecpao_in_s_field_value_pair,
         wa_field     TYPE ecpao_in_s_field_value_pair,
-        massg        TYPE string.
+        massn        TYPE string,
+        massg        TYPE string,
+        event_reason TYPE string.
 
   FIELD-SYMBOLS: <fs_p0001> TYPE p0001.
 
@@ -20,16 +22,30 @@ METHOD process_infotype_0001.
       ws4_tab    = lt_payload.
 
   LOOP AT lt_p0001 ASSIGNING <fs_p0001>.
-    CLEAR massg.
+    CLEAR: massn, massg.
+    CLEAR event_reason.
 
     LOOP AT lt_payload INTO wa_payload
          WHERE begda <= <fs_p0001>-endda
            AND endda >= <fs_p0001>-begda.
       lt_fields = wa_payload-field_value_pair_tab.
 
+      READ TABLE lt_fields INTO wa_field WITH KEY ec_fld_name = 'event'.
+      IF sy-subrc = 0.
+        massn = wa_field-ec_fld_value.
+      ENDIF.
+
+      " If event = '26', find 'eventReason' value
+      IF massn = '26'.
+        READ TABLE lt_fields INTO wa_field WITH KEY ec_fld_name = 'eventReason'.
+        IF sy-subrc = 0.
+          massg = wa_field-ec_fld_value.
+        ENDIF.
+      ENDIF.
+
       READ TABLE lt_fields INTO wa_field WITH KEY ec_fld_name = 'eventReason'.
       IF sy-subrc = 0.
-        massg = wa_field-ec_fld_value.
+        event_reason = wa_field-ec_fld_value.
       ENDIF.
 
       EXIT.
@@ -43,7 +59,7 @@ METHOD process_infotype_0001.
       CLEAR: <fs_p0001>-kostl, <fs_p0001>-vdsk1, <fs_p0001>-orgeh, <fs_p0001>-stell.
     ENDIF.
 
-    CASE massg.
+    CASE event_reason.
       WHEN 'FD' OR 'KW'.
         <fs_p0001>-persg = '3'.
         <fs_p0001>-persk = '90'.

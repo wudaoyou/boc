@@ -3,6 +3,7 @@
     DATA: lt_p0006     TYPE TABLE OF p0006.
     FIELD-SYMBOLS:  <fs_p0006> TYPE p0006.
     DATA lt_payload   TYPE ecpao_t_ec_payload_badi.
+    DATA lt_payload_ws10 TYPE ecpao_t_ec_payload_badi.
     DATA wa_payload   TYPE ecpao_s_ec_payload_badi.
     DATA:lt_fields TYPE TABLE OF ecpao_in_s_field_value_pair,
          wa_fields TYPE ecpao_in_s_field_value_pair.
@@ -18,6 +19,13 @@
     DATA lv_fieldname TYPE string.
 
     lt_p0006 = pnnnn_tab.
+
+    CALL METHOD ec_payload->get_ec_payload
+      EXPORTING
+        ec_templ_id    = 'WS_10'
+      IMPORTING
+        ec_payload_tab = lt_payload_ws10.
+
     CALL METHOD ec_payload->get_ec_payload
       EXPORTING
         ec_templ_id    = 'WS_8'

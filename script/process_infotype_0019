@@ -2,7 +2,8 @@ METHOD process_infotype_0019.
   " Rule: each EC hire/rehire job slice (not 7P) owns exactly one IT0019 task,
   " identified by subtype + hire date. Emit only tasks PA does not have yet:
   " IT0019 is time constraint 3, so a resend would otherwise add a new SEQNR (max 999).
-  DATA: lt_out      TYPE TABLE OF p0019,
+  DATA: lt_in       TYPE TABLE OF p0019,
+        lt_out      TYPE TABLE OF p0019,
         lt_existing TYPE TABLE OF p0019,
         ls_base     TYPE p0019,
         ls_record   TYPE p0019,
@@ -15,7 +16,9 @@ METHOD process_infotype_0019.
         lv_type    TYPE string.
 
   " BIB record only supplies the base fields; nothing to do without one.
-  READ TABLE pnnnn_tab INTO ls_base INDEX 1.
+  " pnnnn_tab is fully generic: copy to a typed table before index access.
+  lt_in = pnnnn_tab.
+  READ TABLE lt_in INTO ls_base INDEX 1.
   IF sy-subrc <> 0.
     RETURN.
   ENDIF.

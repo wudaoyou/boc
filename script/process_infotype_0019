@@ -30,10 +30,13 @@ METHOD process_infotype_0019.
     CHANGING
       ws4_tab    = lt_payload.
 
-  " Read PA0019 directly: no authorization filtering in the BIB user context.
-  SELECT * FROM pa0019
-    WHERE pernr = @pernr
-    INTO CORRESPONDING FIELDS OF TABLE @lt_existing.
+  CALL FUNCTION 'HR_READ_INFOTYPE'
+    EXPORTING
+      pernr         = pernr
+      infty         = '0019'
+      bypass_buffer = 'X'
+    TABLES
+      infty_tab     = lt_existing.
 
   LOOP AT lt_payload INTO wa_payload.
     CLEAR: lv_event, lv_type.

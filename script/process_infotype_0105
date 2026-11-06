@@ -15,7 +15,11 @@ METHOD process_infotype_0105.
 
   lt_p0105 = pnnnn_tab.
 
+  " BIB maps B to 0010 and P to 0030; a P-only person still needs a base row.
   READ TABLE lt_p0105 INTO ls_email_base WITH KEY subty = '0010'.
+  IF sy-subrc <> 0.
+    READ TABLE lt_p0105 INTO ls_email_base WITH KEY subty = '0030'.
+  ENDIF.
   IF sy-subrc = 0.
     lv_email_base_found = abap_true.
   ENDIF.
@@ -78,7 +82,7 @@ METHOD process_infotype_0105.
       ENDLOOP.
 
       TRANSLATE lv_email_primary TO UPPER CASE.
-      CHECK lv_email_addr IS NOT INITIAL AND lv_email_primary = 'TRUE'.
+      CHECK lv_email_addr IS NOT INITIAL AND lv_email_primary = abap_true. " BIB delivers isPrimary as 'X'
 
       ls_email = ls_email_base.
       ls_email-subty = '0010'.

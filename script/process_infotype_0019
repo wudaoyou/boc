@@ -1,6 +1,6 @@
 METHOD process_infotype_0019.
   " Rule: each EC hire/rehire job slice (not 7P) owns exactly one IT0019 task,
-  " identified by subtype + hire date. Emit only tasks PA does not have yet:
+  " identified by subtype + task date (TERMN). Emit only tasks PA does not have yet:
   " IT0019 is time constraint 3, so a resend would otherwise add a new SEQNR (max 999).
   DATA: lt_in       TYPE TABLE OF p0019,
         lt_out      TYPE TABLE OF p0019,
@@ -30,13 +30,10 @@ METHOD process_infotype_0019.
     CHANGING
       ws4_tab    = lt_payload.
 
-  CALL FUNCTION 'HR_READ_INFOTYPE'
-    EXPORTING
-      pernr         = pernr
-      infty         = '0019'
-      bypass_buffer = 'X'
-    TABLES
-      infty_tab     = lt_existing.
+  " Read PA0019 directly: no authorization filtering in the BIB user context.
+  SELECT * FROM pa0019
+    WHERE pernr = @pernr
+    INTO CORRESPONDING FIELDS OF TABLE @lt_existing.
 
   LOOP AT lt_payload INTO wa_payload.
     CLEAR: lv_event, lv_type.
@@ -99,9 +96,10 @@ METHOD process_infotype_0019.
       ls_record-bvmrk = '2'.
     ENDIF.
 
+    " Match on task date, not BEGDA: the stored BEGDA can differ from the one sent.
     READ TABLE lt_existing TRANSPORTING NO FIELDS
       WITH KEY subty = ls_record-subty
-               begda = ls_record-begda.
+               termn = ls_record-termn.
     CHECK sy-subrc <> 0.
 
     APPEND ls_record TO lt_out.

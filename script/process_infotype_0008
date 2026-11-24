@@ -16,12 +16,19 @@
     DATA lv_lgart_exists TYPE abap_bool.
     FIELD-SYMBOLS <fs_lgart> TYPE any.
     FIELD-SYMBOLS <fs_betrg> TYPE any.
+    DATA lt_wt_prefix TYPE TABLE OF string.
+    DATA lv_wt_prefix TYPE string.
+    DATA lv_target TYPE n LENGTH 2.
+    DATA lv_drop TYPE abap_bool.
+    FIELD-SYMBOLS <fs_wt_field> TYPE any.
+    FIELD-SYMBOLS <fs_wt_target> TYPE any.
 
     DATA lv_ANSAL TYPE string.
     DATA lv_bsgrd TYPE string.
 
     APPEND '1745' TO lt_required_lgart.
     APPEND '1805' TO lt_required_lgart.
+    SPLIT 'LGA BET ANZ EIN OPK' AT space INTO TABLE lt_wt_prefix.
 
     lt_p0008 = pnnnn_tab.
 
@@ -89,6 +96,36 @@
       ELSEIF <fs_p0008>-trfar = '11'.
         CLEAR <fs_p0008>-trfst.
         <fs_p0008>-cpind = 'T'.
+
+        "TRFAR 11 / TRFGB 05: drop wage types 9993, 1003, 1001, shift the rest up so LGA01 is not left empty
+        IF <fs_p0008>-trfgb = '05'.
+          CLEAR lv_target.
+          DO 40 TIMES.
+            lv_slot = sy-index.
+            lv_lgart_field = |LGA{ lv_slot }|.
+            ASSIGN COMPONENT lv_lgart_field OF STRUCTURE <fs_p0008> TO <fs_lgart>.
+            CHECK sy-subrc = 0.
+            CHECK <fs_lgart> IS NOT INITIAL.
+            IF <fs_lgart> = '9993' OR <fs_lgart> = '1003' OR <fs_lgart> = '1001'.
+              lv_drop = abap_true.
+            ELSE.
+              lv_drop = abap_false.
+              lv_target = lv_target + 1.
+              CHECK lv_target <> lv_slot.
+            ENDIF.
+            LOOP AT lt_wt_prefix INTO lv_wt_prefix.
+              lv_lgart_field = |{ lv_wt_prefix }{ lv_slot }|.
+              ASSIGN COMPONENT lv_lgart_field OF STRUCTURE <fs_p0008> TO <fs_wt_field>.
+              CHECK sy-subrc = 0.
+              IF lv_drop = abap_false.
+                lv_lgart_field = |{ lv_wt_prefix }{ lv_target }|.
+                ASSIGN COMPONENT lv_lgart_field OF STRUCTURE <fs_p0008> TO <fs_wt_target>.
+                <fs_wt_target> = <fs_wt_field>.
+              ENDIF.
+              CLEAR <fs_wt_field>.
+            ENDLOOP.
+          ENDDO.
+        ENDIF.
 
         LOOP AT lt_required_lgart INTO lv_required_lgart.
           lv_lgart_exists = abap_false.
